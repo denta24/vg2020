@@ -65,6 +65,92 @@ MongoClient.connect(
       });
     });
 
+    app.get("/api/categories/:mainCategory/:category", (req, res) => {
+      ///////// READING CATEGORIES
+
+      let rawcatdata = fs.readFileSync("categories.json");
+      let { categories } = JSON.parse(rawcatdata);
+
+      let mainCategory = categories.filter(
+        category => category.name[1] === req.params.mainCategory
+      );
+      let category = mainCategory[0].titles.filter(
+        item => item[1] === req.params.category
+      );
+      const [main] = mainCategory;
+      const [item] = category;
+      const itemSubCategory = item;
+
+      ///////CREATING CATEGORIES PATH OBJEC
+
+      console.log(req.params);
+
+      const path = `/${main.name[1]}/${item[1]}`;
+      const linkProps = {
+        pathname: path,
+        state: {
+          pathName: { mainCat: main.name[0], category: item[0] },
+          pathLink: { mainCat: `/${main.name[1]}`, category: path }
+        }
+      };
+
+      ///////// READING DATA
+      // let rawdata = fs.readFileSync("test.json");
+      // let kobiety = JSON.parse(rawdata);
+
+      // console.log("query:", req.query, "params:", req.params);
+      // ////////////////////////////
+
+      console.log("chce1");
+
+      const collection = db.db("VellutoGiorno").collection("test");
+      console.log("chce2");
+
+      collection
+        .find({
+          $and: [
+            { mainCategory: main.name[0] },
+            { category: itemSubCategory[0] }
+          ]
+        })
+        .toArray()
+        .then(response => {
+          res.json({
+            kobiety: { items: response },
+            params: req.params,
+            linkProps
+          });
+          // db.close();
+          console.log(req.params, main.name[0], itemSubCategory[0]);
+        });
+
+      ///////// FILTERS DATA - PRAMS,QUERY
+
+      // if (Object.keys(req.query).length !== 0) {
+      //   filteredWomans = kobiety.items.filter(item => {
+      //     return true;
+      //     // item.prize < req.query.maxprize * 20 &&
+      //     // item.prize > req.query.minprize * 20 &&
+      //     // item.size === req.query.sizes
+      //   });
+      // } else filteredWomans = kobiety.items;
+
+      // // if (Object.keys(req.params).length !== 0) {
+      // //   filteredWomans = filteredWomans.filter(item => {
+      // //     return item.mainCategory === main.name[0];
+      // //   });
+      // // } else filteredWomans = kobiety.items;
+
+      // // if (Object.keys(req.params).length !== 0) {
+      // //   filteredWomans = filteredWomans.filter(item => {
+      // //     // console.log(item.category.toLowerCase(),req.params.category);
+      // //     return item.category.toLowerCase() === itemSubCategory[0].toLowerCase();
+      // //   });
+      // // } else filteredWomans = kobiety.items;
+
+      // ///////// SENDING DATA
+    });
+
     if (process.env.NODE_ENV === "production") {
       app.use(express.static("client/build"));
       app.get("*", (req, res) => {
