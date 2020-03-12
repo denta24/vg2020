@@ -202,7 +202,7 @@ export default class Productpage extends Component {
   callApi = async () => {
     const url = `/api/categories${window.location.pathname}`;
     const response = await fetch(url);
-    console.log({url});
+    console.log({ url });
     const body = await response.json();
     if (response.status !== 200) throw Error(body.message);
     return body;
@@ -307,27 +307,16 @@ export default class Productpage extends Component {
       .childNodes;
 
     const tl = gsap.timeline({ defaults: { ease: "power3.inOut" } });
-    tl.from(wrapper, 2, { x: -300, opacity: 0, stagger: 0.2 })
-      .from(
-        titles,
-        2,
-        {
-          x: -100,
-          opacity: 0,
-          stagger: 0.4
-        },
-        "-=1"
-      )
-      .from(
-        items,
-        2,
-        {
-          y: 200,
-          opacity: 0,
-          stagger: 0.2
-        },
-        "-=3"
-      );
+    tl.from(titles, 2, { x: -300, opacity: 0, stagger: 0.2 })
+    .from(
+      items,
+      {
+        y: 200,
+        opacity: 0,
+        stagger: 0.2,
+        ease: "power0"
+      }, "-=1"
+    );
   };
   componentDidMount() {
     this.handleULRstate();

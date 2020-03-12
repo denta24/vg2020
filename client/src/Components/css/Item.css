@@ -41,6 +41,7 @@ body {
   font-size: 14px;
 }
 .product {
+  display: -webkit-flex;
   display: flex;
   width: 70vw;
   background-color: #fff;
