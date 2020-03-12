@@ -67,8 +67,14 @@ body {
 }
 
 .product__mini {
-  flex-basis: 7vw;
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
   display: flex;
+  flex-basis: 7vw;
   flex-direction: column;
   /* justify-content: space-around; */
 }
@@ -370,7 +376,7 @@ body {
     flex-direction: row;
     flex-grow: 1;
     flex-basis: 100%;
-    touch-action: pan-y;
+    /* touch-action: pan-y; */
   }
   .product__mini-image {
     flex-grow: 1;
