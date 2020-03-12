@@ -1,0 +1,28 @@
+.headerSite {
+  background: 
+  
+    url("/photos/womensite1.png");
+  width: 100vw;
+  height: 62vh;
+  background-size: cover;
+  background-position: right ;
+  position: relative;
+}
+
+.headerSite__text {
+  font-family: Raleway;
+  text-transform: uppercase;
+  font-weight: 100;
+  position: absolute;
+  bottom: 0;
+  right: 5%;
+  transform: translate(0, 0);
+  font-size: 58px;
+  color: rgb(255, 255, 255);
+}
+
+.gender{
+display: flex;
+width: 100vw;
+/* width: 80vh; */
+}

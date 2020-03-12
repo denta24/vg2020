@@ -1,0 +1,307 @@
+.headerAllWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  background: linear-gradient(
+      90.19deg,
+      rgba(0, 0, 0, 0) 38.94%,
+      rgba(0, 0, 0, 0.72) 69.17%
+    ),
+    url("/photos/HEADERMAIN.jpg");
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  background-size: cover;
+  transition: 0.5s;
+  overflow: hidden;
+  width: 100%;
+  /* animation: header 20s infinite alternate; */
+}
+@keyframes header {
+  0% {
+    background-image: 
+    /* linear-gradient(
+        90.19deg,
+        rgba(0, 0, 0, 0) 38.94%,
+        rgba(0, 0, 0, 0.72) 69.17%
+      ), */ url("/photos/HEADERMAIN.jpg");
+  }
+  40% {
+    background-image: 
+    /* linear-gradient(
+        90.19deg,
+        rgba(0, 0, 0, 0) 38.94%,
+        rgba(0, 0, 0, 0.72) 69.17%
+      ), */ url("/photos/HEADERMAIN.jpg");
+  }
+
+  40% {
+    background-image: url("/photos/mensite.png");
+  }
+  70% {
+    background-image: url("/photos/mensite.png");
+  }
+
+  70% {
+    background-image: url("/photos/eee.png");
+  }
+  100% {
+    background-image: url("/photos/eee.png");
+  }
+}
+
+.txtContainer {
+  position: absolute;
+  top: 50vh;
+  right: 7vw;
+  font-family: "Montserrat";
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: 48px;
+  color: white;
+  text-align: center;
+}
+
+.txtContainer .txt {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 38px;
+  line-height: 59px;
+  /* identical to box height */
+
+  letter-spacing: 0.5em;
+
+  color: #ffffff;
+}
+.header__button {
+  font-family: "Montserrat";
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: 32px;
+  color: white;
+  text-decoration: none;
+  display: inline-block;
+  background-color: transparent;
+  border: 3px solid white;
+  padding: 20px;
+  transition: 0.5s;
+}
+.header__button:hover {
+  color: rgb(54, 54, 54);
+  background-color: white;
+}
+
+.transp {
+  width: 100vw;
+  height: 100vh;
+  /* background: linear-gradient(360deg, #ffffff 0%, rgba(255, 255, 255, 0) 2.5%), */
+  /* linear-gradient(176.42deg, #000000 4.96%, rgba(0, 0, 0, 0) 25.22%); */
+}
+
+.genderApp {
+  display: flex;
+  width: 100vw;
+  height: 80vh;
+}
+
+.gender__divider {
+  flex-basis: 50vw;
+  flex-grow: 1;
+  background: url("/photos/womensite1.png");
+  width: 100vw;
+  background-size: cover;
+  background-position: right;
+  position: relative;
+  color: white;
+  transition: 0.52s;
+  margin: 4vh 1vw 0;
+  cursor: pointer;
+  border-bottom: 5px solid white;
+}
+
+.gender__divider:hover {
+  /* opacity: 0.97; */
+  border-bottom: 5px solid rgb(253, 90, 90);
+}
+.gender__divider:nth-child(2) {
+  flex-basis: 50vw;
+  flex-grow: 1;
+  background: url("/photos/mensite.png");
+
+  width: 100vw;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.gender__text {
+  font-size: 48px;
+  bottom: 2%;
+  left: 2%;
+  position: absolute;
+}
+
+@media (max-width: 1024px) {
+  header {
+    background-position: 30% 10%;
+    background-size: cover;
+    height: 50vh;
+    background-attachment: fixed;
+    background-size: 130%;
+  }
+  .txtContainer {
+    top: 25vh;
+    right: 3vw;
+  }
+
+  .genderApp {
+    display: flex;
+    flex-direction: column;
+    height: 40vh;
+  }
+
+  .gender__divider {
+    margin: 20px;
+    width: 98vw;
+    margin: 0vh auto 0;
+    background-position: 50% 5%;
+  }
+
+  .gender__divider:nth-child(2) {
+    margin: 20px;
+    width: 98vw;
+    margin: 0vh auto 0;
+  }
+}
+@media (max-width: 768px) {
+  header {
+    height: 50vh;
+  }
+  .txtContainer {
+    top: 25vh;
+    right: 3vw;
+    font-size: 42px;
+  }
+
+  .txtContainer .txt {
+    font-size: 24px;
+    line-height: 59px;
+    letter-spacing: 0.5em;
+    color: #ffffff;
+  }
+  .gender__text {
+    font-size: 32px;
+    bottom: 2%;
+    left: 2%;
+    position: absolute;
+  }
+}
+
+@media (max-width: 375px) {
+  header {
+    background-position: 45% 15%;
+    height: 50vh;
+    background-size: 190%;
+  }
+  .txtContainer {
+    top: 22.5vh;
+    right: 3vw;
+    font-size: 28px;
+  }
+
+  .txtContainer .txt {
+    font-size: 16px;
+    line-height: 25px;
+    letter-spacing: 0.5em;
+    color: #ffffff;
+  }
+
+  .header__button {
+    font-size: 14px;
+    color: white;
+    display: inline-block;
+    border: 2px solid white;
+    padding: 20px;
+  }
+
+  .gender__text {
+    position: absolute;
+    font-size: 18px;
+    background-color: rgba(0, 0, 0, 0.507);
+    padding: 10px;
+  }
+  .gender__divider {
+    margin: 20px;
+    width: 98vw;
+    margin: 0vh auto 0;
+    transform: scale(0.99);
+  }
+}
+
+@media (max-width: 425px) {
+  header {
+    background-position: 45% 10%;
+    height: 50vh;
+    background-size: 200%;
+  }
+  .txtContainer {
+    top: 22.5vh;
+    right: 7vw;
+    font-size: 25px;
+  }
+
+  .txtContainer .txt {
+    font-size: 16px;
+    letter-spacing: 4px;
+  }
+
+  .header__button {
+    font-size: 16PX;
+    padding: 14px;
+  }
+}
+
+@media (max-height: 667px) {
+  header {
+    background-position: 45% 15%;
+    height: 50vh;
+    background-size: 200%;
+  }
+  .txtContainer {
+    top: 22.5vh;
+    right: 7vw;
+    font-size: 25px;
+  }
+
+  .txtContainer .txt {
+    font-size: 16px;
+    letter-spacing: 4px;
+  }
+
+  .header__button {
+    padding: 14px;
+  }
+}
+@media (max-width: 325px) {
+  header {
+    background-position: 45% 15%;
+    height: 50vh;
+    background-size: 180%;
+  }
+  .txtContainer {
+    top: 22.5vh;
+    right: 7vw;
+    font-size: 22px;
+  }
+
+  .txtContainer .txt {
+    font-size: 14px;
+    letter-spacing: 4px;
+  }
+
+  .header__button {
+    padding: 12px;
+  }
+}

@@ -1,0 +1,15 @@
+table {
+    font-family: monstserrat;
+    border-collapse: collapse;
+    width: 85%;
+    margin: 0 auto;
+    padding: 2px;
+  }
+  
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 1px 20px;
+    font-weight: 300px;
+  }
+  

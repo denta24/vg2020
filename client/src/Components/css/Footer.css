@@ -1,0 +1,134 @@
+footer {
+  /* height: 30vh; */
+  background-color: #232323;
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+}
+
+footer .divider {
+  flex-basis: 28%;
+  color: #a1a1a1;
+  font-size: 12px;
+  margin-top: 3vh;
+  margin-bottom: 3vh;
+}
+.divider:nth-child(1) {
+  flex-basis: 23%;
+}
+.title {
+  margin: 3vh 30px 2vh;
+
+  font-size: 13px;
+  line-height: 20px;
+}
+
+i {
+  color: rgb(165, 165, 165);
+  font-size: 30px;
+  margin-right: 15px;
+}
+
+.title:nth-child(1) {
+  padding-bottom: 1px;
+  border-bottom: 1px solid rgb(77, 77, 77);
+}
+.title:nth-child(1):after {
+  content: "";
+  display: block;
+  width: 40px;
+  background-color: rgb(255, 0, 0);
+  height: 1px;
+  margin-top: 2vh;
+}
+
+.divider span {
+  color: white;
+  margin-left: 1.5vw;
+}
+
+.black {
+  background-color: rgb(19, 18, 18);
+  text-align: left;
+  color: rgb(231, 230, 230);
+  font-family: "montserrat";
+  font-weight: 200;
+  font-size: 12px;
+  letter-spacing: 1px;
+  line-height: 50px;
+  padding-left: 3vw;
+}
+
+.imgContainer {
+  background: bottom center no-repeat;
+  height: 70px;
+  /* width: 100%; */
+  background-size: contain;
+  background-image: url(./logo4.png);
+  /* transform: scale(1); */
+  z-index: 99;
+  margin-bottom: 0.5vw;
+  opacity: 1;
+}
+.onas {
+  margin-top: 3px;
+}
+
+@media (max-width: 1366px) {
+  .title {
+    margin: 1vh 30px 1vh;
+  }
+}
+
+@media (max-width: 1024px) {
+  .title {
+    margin: 3vh 30px 1vh;
+    font-size: 12px;
+    line-height: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .title {
+    margin: 1vh 30px 2vh;
+    font-size: 12px;
+    line-height: 20px;
+  }
+
+  .divider:nth-child(3) {
+    flex-basis: 43%;
+  }
+  .imgContainer {
+    background-position-y: top;
+    height: 30px;
+  }
+}
+
+@media (max-width: 425px) {
+  .title {
+    margin: 1vh 30px 1.5vh;
+    font-size: 12px;
+    line-height: 20px;
+    align-self: flex-start;
+  }
+  footer .divider {
+    margin: 3vh 1vw 0 ;
+  }
+  .imgContainer {
+    background-position-y: top;
+    height: 60px;
+  }
+  .black {
+    font-size: 7px;
+  }
+
+  footer {
+    flex-direction: column;
+  }
+  .divider:nth-child(3) {
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
