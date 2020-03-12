@@ -42,13 +42,13 @@ export default class CategoriesMain extends Component {
         }
 
         slider.style.transform = `translateX(${transformX + diff}px)`;
-        target.style.pointerEvents = "none";
+        // target.style.pointerEvents = "none";
       }
     };
 
     const up = e => {
       isClicked = false;
-      if (target) target.style.pointerEvents = "auto";
+      // if (target) target.style.pointerEvents = "auto";
       e.preventDefault();
     };
 
