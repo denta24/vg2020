@@ -285,7 +285,7 @@ body {
   overflow: hidden;
   transition: 0.2s;
   width: 100%;
-  margin: 20px;
+  padding: 1.2em 1em;
 }
 .product__expanding--open {
   max-height: 100vh;
@@ -375,7 +375,8 @@ body {
   .product__mini {
     flex-direction: row;
     flex-grow: 1;
-    flex-basis: 100%;
+    /* flex-basis: 100%; */
+    height: auto;
     /* touch-action: pan-y; */
   }
   .product__mini-image {

@@ -9,7 +9,7 @@ export default class Discount extends Component {
 
   loadIndex = () => {
     console.log("eeee");
-    fetch(`/wybor`)
+    fetch(`/api/products/wybor`)
       .then(res => res.json())
       .then(res => {
         const ids = res.response[0].przecena;
@@ -46,6 +46,7 @@ export default class Discount extends Component {
             <h1 className="productSelectedName__type">ostatnie sztuki</h1>
           </div>
         </div>
+          <div style={{ height: "6vh" }}></div>
         <div className="main-categories-container ">
           <div className="main-categories main-categories-container--more-items">
             {products}
