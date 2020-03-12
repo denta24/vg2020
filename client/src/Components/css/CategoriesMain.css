@@ -111,6 +111,8 @@
   height: auto;
   width: auto;
   user-select: "none";
+  -webkit-user-select: none;
+ /* -webkit-touch-callout: none; */
 }
 .item.item--moreproducts {
   display: flex;

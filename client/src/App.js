@@ -160,6 +160,8 @@ class App extends Component {
                 <span className="close">Przejdz do kasy</span>
               </a>
             </div>
+            
+            <Switch>
             <Route exact path="/">
               <Header />
               <div className="container">
@@ -167,7 +169,6 @@ class App extends Component {
               </div>
               <MoreItems />
             </Route>
-            <Switch>
               <Route path="/admin" component={Admin} />
               <Route exact path="/mezczyzni" component={Men} />
               <Route exact path="/suknie-slubne" component={Bride} />
