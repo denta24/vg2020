@@ -79,10 +79,12 @@ export default class CategoriesMain extends Component {
   };
 
   loadIndex = () => {
-    console.log("eeee");
-    fetch(`/wybor`)
+
+    fetch(`/api/products/wybor`)
       .then(res => res.json())
       .then(res => {
+    console.log('mount');
+
         const ids = res.response[0].polecane;
         this.setState({
           ids

@@ -8,11 +8,12 @@ export default class SingleItem extends Component {
   };
 
   loadItem = () => {
+    console.log(this.props.id);
     fetch(`/api/product/${this.props.id}`)
       .then(res => res.json())
       .then(res => {
         const item = res;
-
+        console.log(this.props.id);
         this.setState({ item, isLoaded: true });
       })
       .catch(err => console.log(err));

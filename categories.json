@@ -1,0 +1,37 @@
+{
+  "categories": [
+    {
+      "name": ["Kobiety", "kobiety"],
+      "titles": [
+        ["Sukienki", "sukienki"],
+        ["Suknie na studniówkę", "sukienki-na-studniowke"],
+        ["Kurtki & Płaszcze", "kurtki-plaszcze"],
+        ["Spodnie", "spodnie"],
+        ["Koszule", "koszule"],
+        ["Obuwie", "obuwie"],
+        ["Biżuteria", "bizuteria"],
+        ["Torebki", "torebki"]
+      ]
+    },
+    {
+      "name": ["Mężczyźni", "mezczyzni"],
+      "titles": [
+        ["Garnitury", "garnitury"],
+        ["Marynarki", "marynarki"],
+        ["Koszule", "koszule"],
+        ["Spodnie", "spodnie"],
+        ["Płaszcze", "plaszcze"],
+        ["Obuwie", "obuwie"],
+        ["Akcesoria", "akcesoria"]
+      ]
+    },
+    {
+      "name": ["Suknie ślubne", "suknie-slubne"],
+      "titles": [
+        ["Suknie", "suknie"],
+        ["Obuwie", "obuwie"],
+        ["Dodatki", "dodatki"]
+      ]
+    }
+  ]
+}
