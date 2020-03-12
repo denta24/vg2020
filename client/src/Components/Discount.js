@@ -35,7 +35,7 @@ export default class Discount extends Component {
       <>
         <div
           style={{
-            backgroundImage: "url('/photos/szafaaa.png')",
+            backgroundImage: "url('/photos/szafaaa.jpg')",
             backgroundSize: "cover"
           }}
           className="headerProductsSite"

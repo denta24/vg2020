@@ -28,11 +28,11 @@
   flex-direction: column;
   cursor: pointer;
   flex-shrink: 0;
-  transition: 0.5s;
+  /* transition: 0.5s; */
   box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.178);
 }
 .category:hover {
-  transform: translate(0, -10px);
+  /* transform: translate(0, -10px); */
 }
 
 .container {

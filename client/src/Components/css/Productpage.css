@@ -5,7 +5,7 @@
       rgba(236, 236, 236, 0) 45vh,
       #111111 100vh
     ),
-    url("/photos/szafaaa.png");
+    url("/photos/szafaaa.jpg");
   background-repeat: no-repeat;
   background-attachment: inherit;
   z-index: -22;
@@ -52,7 +52,7 @@
   overflow: hidden;
   /* margin: 1vh 1vw; */
   background-repeat: no-repeat;
-  /* background-image: url("/photos/men.png"); */
+  /* background-image: url("/photos/men.jpg"); */
   /* z-index: -2; */
   background-size: unset;
   display: flex;
@@ -402,7 +402,7 @@
 }
 
 .loadingSite {
-  background-image: url("/photos/szafaaa.png");
+  background-image: url("/photos/szafaaa.jpg");
   position: fixed;
   top: 5vh;
   bottom: 0;

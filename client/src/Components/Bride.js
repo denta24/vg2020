@@ -6,9 +6,9 @@ import "./css/site.css";
 
 export default function Bride() {
   const categoriesInfo = [
-    ["Suknie", "suknie", "/photos/suknieslu.png"],
-    ["Obuwie", "obuwie", "/photos/brideshoes.png"],
-    ["Dodatki", "dodatki", "/photos/addosn.png"]
+    ["Suknie", "suknie", "/photos/suknieslu.jpg"],
+    ["Obuwie", "obuwie", "/photos/brideshoes.jpg"],
+    ["Dodatki", "dodatki", "/photos/addosn.jpg"]
   ];
 
   const categories = categoriesInfo.map(category => (
@@ -27,7 +27,7 @@ export default function Bride() {
   return (
     <>
       <div
-        style={{ backgroundImage: "url('/photos/sukniess.png')" }}
+        style={{ backgroundImage: "url('/photos/sukniess.jpg')" }}
         class="headerSite"
       >
           <div className="productSelectedName productSelectedName--site">

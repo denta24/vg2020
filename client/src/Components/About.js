@@ -4,7 +4,7 @@ export default function About() {
   return (
     <>
       <div className="about">
-        <img className="about__img" src="/photos/about.png" alt="" />
+        <img className="about__img" src="/photos/about.jpg" alt="" />
       </div>
       <div className="about-column">
         <div className="about-column__divider"></div>

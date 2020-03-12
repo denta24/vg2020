@@ -93,7 +93,7 @@ export default function Navi() {
           <div className="hamburger__line"></div>
         </div>
         <a className="logos" href="/">
-          <img className="imglogo" src="/photos/logo4.png" alt="" />
+          <img className="imglogo" src="/photos/logo4.jpg" alt="" />
         </a>
       </nav>
 

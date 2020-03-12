@@ -253,24 +253,24 @@ export default class Productpage extends Component {
     const { mainCat } = this.state.linkProps.state.pathName;
     console.log(mainCat);
     const bg = document.querySelector(".productSiteWrapper");
-    // bg.style.backgroundImage = `url("/photos/men.png")`;
+    // bg.style.backgroundImage = `url("/photos/men.jpg")`;
     console.log(mainCat);
 
     if (document.body.clientWidth > 425) {
       switch (mainCat) {
         case "Kobiety":
           return {
-            backgroundImage: `url('/photos/zaj.png')`
+            backgroundImage: `url('/photos/zaj.jpg')`
           };
           break;
         case "Mężczyźni":
           return {
-            backgroundImage: `url('/photos/men.png')`
+            backgroundImage: `url('/photos/men.jpg')`
           };
           break;
         case "Suknie ślubne":
           return {
-            backgroundImage: `url('/photos/sssss.png')`
+            backgroundImage: `url('/photos/sssss.jpg')`
           };
           break;
         default:
@@ -285,7 +285,7 @@ export default class Productpage extends Component {
           break;
         case "Mężczyźni":
           return {
-            backgroundImage: `url('/photos/men425.png')`
+            backgroundImage: `url('/photos/men425.jpg')`
           };
           break;
         case "Suknie ślubne":

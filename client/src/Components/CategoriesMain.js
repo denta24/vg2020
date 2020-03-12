@@ -76,25 +76,25 @@ export default class CategoriesMain extends Component {
   }
   render() {
     const categoriesInfo = [
-      ["Sukienki", "/kobiety/sukienki", "/photos/dressCategory.png"],
-      ["Garnitury", "/mezczyzni/garnitury", "/photos/suit.png"],
-      ["Marynarki", "/mezczyzni/marynarki", "/photos/jacket.png"],
-      ["Kurtki & Płaszcze", "/kobiety/kurtki-plaszcze", "/photos/coat.png"],
-      ["Koszule", "/mezczyzni/koszule", "/photos/shirtsuit.png"],
-      ["Spodnie", "/mezczyzni/spodnie", "/photos/trousersmen.png"],
-      ["Płaszcze", "/mezczyzni/plaszcze", "/photos/menjacket.png"],
-      ["Obuwie", "/mezczyzni/obuwie", "/photos/shoes.png"],
-      ["Akcesoria", "/mezczyzni/akcesoria", "/photos/tie.png"],
-      ["Obuwie", "/kobiety/obuwie", "/photos/szpilki.png"],
+      ["Sukienki", "/kobiety/sukienki", "/photos/dressCategory.jpg"],
+      ["Garnitury", "/mezczyzni/garnitury", "/photos/suit.jpg"],
+      ["Marynarki", "/mezczyzni/marynarki", "/photos/jacket.jpg"],
+      ["Kurtki & Płaszcze", "/kobiety/kurtki-plaszcze", "/photos/coat.jpg"],
+      ["Koszule", "/mezczyzni/koszule", "/photos/shirtsuit.jpg"],
+      ["Spodnie", "/mezczyzni/spodnie", "/photos/trousersmen.jpg"],
+      ["Płaszcze", "/mezczyzni/plaszcze", "/photos/menjacket.jpg"],
+      ["Obuwie", "/mezczyzni/obuwie", "/photos/shoes.jpg"],
+      ["Akcesoria", "/mezczyzni/akcesoria", "/photos/tie.jpg"],
+      ["Obuwie", "/kobiety/obuwie", "/photos/szpilki.jpg"],
       [
         "Suknie na studniówkę",
         "/kobiety/sukienki-na-studniowke",
-        "/photos/prom.png"
+        "/photos/prom.jpg"
       ],
-      ["Koszule", "/kobiety/koszule", "/photos/shirt.png"],
-      ["Spodnie", "/kobiety/spodnie", "/photos/trousers.png"],
-      ["Biżuteria", "/kobiety/bizuteria", "/photos/biz.png"],
-      ["Torebki", "/kobiety/torebki", "/photos/handbag.png"]
+      ["Koszule", "/kobiety/koszule", "/photos/shirt.jpg"],
+      ["Spodnie", "/kobiety/spodnie", "/photos/trousers.jpg"],
+      ["Biżuteria", "/kobiety/bizuteria", "/photos/biz.jpg"],
+      ["Torebki", "/kobiety/torebki", "/photos/handbag.jpg"]
     ];
 
     const categories = categoriesInfo.map(category => (

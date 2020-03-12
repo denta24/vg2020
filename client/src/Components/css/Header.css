@@ -37,17 +37,17 @@ header {
   }
 
   40% {
-    background-image: url("/photos/mensite.png");
+    background-image: url("/photos/mensite.jpg");
   }
   70% {
-    background-image: url("/photos/mensite.png");
+    background-image: url("/photos/mensite.jpg");
   }
 
   70% {
-    background-image: url("/photos/eee.png");
+    background-image: url("/photos/eee.jpg");
   }
   100% {
-    background-image: url("/photos/eee.png");
+    background-image: url("/photos/eee.jpg");
   }
 }
 
@@ -109,7 +109,7 @@ header {
 .gender__divider {
   flex-basis: 50vw;
   flex-grow: 1;
-  background: url("/photos/womensite1.png");
+  background: url("/photos/womensite1.jpg");
   width: 100vw;
   background-size: cover;
   background-position: right;
@@ -128,7 +128,7 @@ header {
 .gender__divider:nth-child(2) {
   flex-basis: 50vw;
   flex-grow: 1;
-  background: url("/photos/mensite.png");
+  background: url("/photos/mensite.jpg");
 
   width: 100vw;
   background-size: cover;

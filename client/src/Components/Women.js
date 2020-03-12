@@ -75,14 +75,14 @@ export default function Women() {
   };
 
   const categoriesInfo = [
-    ["Sukienki", "sukienki", "/photos/dressCategory.png"],
-    ["Suknie na studniówkę", "sukienki-na-studniowke", "/photos/prom.png"],
-    ["Koszule", "koszule", "/photos/shirt.png"],
-    ["Kurtki & Płaszcze", "kurtki-plaszcze", "/photos/coat.png"],
-    ["Obuwie", "obuwie", "/photos/szpilki.png"],
-    ["Spodnie", "spodnie", "/photos/trousers.png"],
-    ["Biżuteria", "bizuteria", "/photos/biz.png"],
-    ["Torebki", "torebki", "/photos/handbag.png"]
+    ["Sukienki", "sukienki", "/photos/dressCategory.jpg"],
+    ["Suknie na studniówkę", "sukienki-na-studniowke", "/photos/prom.jpg"],
+    ["Koszule", "koszule", "/photos/shirt.jpg"],
+    ["Kurtki & Płaszcze", "kurtki-plaszcze", "/photos/coat.jpg"],
+    ["Obuwie", "obuwie", "/photos/szpilki.jpg"],
+    ["Spodnie", "spodnie", "/photos/trousers.jpg"],
+    ["Biżuteria", "bizuteria", "/photos/biz.jpg"],
+    ["Torebki", "torebki", "/photos/handbag.jpg"]
   ];
 
   const categories = categoriesInfo.map(category => (

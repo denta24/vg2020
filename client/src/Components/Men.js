@@ -81,13 +81,13 @@ export default function Men() {
   };
 
   const categoriesInfo = [
-    ["Garnitury", "garnitury", "/photos/suit.png"],
-    ["Marynarki", "marynarki", "/photos/jacket.png"],
-    ["Koszule", "koszule", "/photos/shirtsuit.png"],
-    ["Spodnie", "spodnie", "/photos/trousersmen.png"],
-    ["Płaszcze", "plaszcze", "/photos/menjacket.png"],
-    ["Obuwie", "obuwie", "/photos/shoes.png"],
-    ["Akcesoria", "akcesoria", "/photos/tie.png"]
+    ["Garnitury", "garnitury", "/photos/suit.jpg"],
+    ["Marynarki", "marynarki", "/photos/jacket.jpg"],
+    ["Koszule", "koszule", "/photos/shirtsuit.jpg"],
+    ["Spodnie", "spodnie", "/photos/trousersmen.jpg"],
+    ["Płaszcze", "plaszcze", "/photos/menjacket.jpg"],
+    ["Obuwie", "obuwie", "/photos/shoes.jpg"],
+    ["Akcesoria", "akcesoria", "/photos/tie.jpg"]
   ];
 
   const categories = categoriesInfo.map(category => (
@@ -109,7 +109,7 @@ export default function Men() {
   return (
     <>
       <div
-        style={{ backgroundImage: "url('/photos/mensite.png')" }}
+        style={{ backgroundImage: "url('/photos/mensite.jpg')" }}
         class="headerSite productSelectedName--site"
       >
         <div className="productSelectedName productSelectedName--site">
