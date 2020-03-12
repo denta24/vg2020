@@ -389,6 +389,8 @@ a {
   .cart {
     width: 50vw;
     padding: 15px;
+    overflow-y: scroll;
+    -webkit-overflow-y-scrolling: touch;
   }
 
   .singleCartItem__infoSingle {

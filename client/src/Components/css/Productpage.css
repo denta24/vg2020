@@ -35,8 +35,7 @@
 .routeText--selected:hover {
   color: rgb(63, 63, 63);
 }
-.RouteText__text{
-
+.RouteText__text {
   display: flex;
 }
 .numberOfItems {
@@ -422,6 +421,9 @@
 @media (max-width: 1024px) {
   .headerProductsSite {
     height: 30vh;
+    background-attachment: scroll !important
+    ;
+
     overflow: hidden;
     background-position: center 0;
   }
@@ -534,8 +536,7 @@
     margin: 4px;
     text-align: left;
   }
-  .RouteText__text{
-
+  .RouteText__text {
     display: none;
   }
 }

@@ -325,10 +325,7 @@ export default class Cart extends Component {
 
     return (
       <>
-        <div
-          style={{ backgroundAttachment: "fixed" }}
-          className="productSiteWrapper"
-        >
+        <div className="productSiteWrapper">
           <div class="orderHeader">
             <div class="orderHeaderMask">
               <div className="orderHeaderMask__your-order">
