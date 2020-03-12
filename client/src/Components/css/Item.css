@@ -86,8 +86,9 @@ body {
 }
 
 .product__src {
+  height: auto;
+
   width: 100%;
-  min-height: auto;
 }
 
 .productSelectedName--item {
@@ -359,6 +360,11 @@ body {
     display: none;
   }
 
+  .product__src {
+    height: auto;
+
+    width: 100%;
+  }
   .product__mini {
     flex-direction: row;
     flex-grow: 1;
