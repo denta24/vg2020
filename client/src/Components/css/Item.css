@@ -87,6 +87,7 @@ body {
 
 .product__src {
   width: 100%;
+  min-height: auto;
 }
 
 .productSelectedName--item {
@@ -264,9 +265,8 @@ body {
   height: 2px;
   margin-top: 10px;
 }
-.product__addContainer{
+.product__addContainer {
   margin: 5vh auto 5vh 0;
-
 }
 
 .product__expanding {
@@ -344,7 +344,7 @@ body {
     margin: 5vh 2vw 0 3vh;
   }
   .product__addContainer {
-  display: flex;
+    display: flex;
   }
 }
 
@@ -358,7 +358,7 @@ body {
   .product__photos {
     display: none;
   }
-  
+
   .product__mini {
     flex-direction: row;
     flex-grow: 1;
