@@ -167,7 +167,7 @@ class App extends Component {
                 <div className="container">
                   <CategoriesMain />
                 </div>
-                <MoreItems />
+                {/* <MoreItems /> */}
               </Route>
               <Route path="/admin" component={Admin} />
               <Route exact path="/mezczyzni" component={Men} />

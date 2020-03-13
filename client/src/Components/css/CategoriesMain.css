@@ -5,8 +5,7 @@
   display: flex;
   flex-wrap: nowrap;
   transform: translateX(0);
-  touch-action: pan-y
-  ;
+  touch-action: none ;
   /* user-select: "none"; */
 }
 
