@@ -163,7 +163,7 @@
 @media (max-width: 425px) {
   .category {
     flex-basis: 45%;
-    height: 35vh;
+    height: 45vh;
   }
 
   .category__img {
