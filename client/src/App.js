@@ -166,8 +166,8 @@ class App extends Component {
                 <Header />
                 <div className="container">
                   <CategoriesMain />
+                <MoreItems />
                 </div>
-                {/* <MoreItems /> */}
               </Route>
               <Route path="/admin" component={Admin} />
               <Route exact path="/mezczyzni" component={Men} />

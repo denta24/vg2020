@@ -59,31 +59,17 @@ export default class CategoriesMain extends Component {
       e.preventDefault();
     };
 
-    if (window.PointerEvent) {
-      console.log("pointer");
-
-      slider.addEventListener("pointerdown", down);
-      slider.addEventListener("pointermove", move);
-      slider.addEventListener("pointerup", up);
-    } else {
-      console.log("desc");
-
-      slider.addEventListener("touchdown", down);
-      slider.addEventListener("touchmove", move);
-      slider.addEventListener("touchup", up);
-      slider.addEventListener("mousedown", down);
-      slider.addEventListener("mousemove", move);
-      slider.addEventListener("mouseleave", up);
-      window.addEventListener("mouseup", up);
-    }
+    slider.addEventListener("mousedown", down);
+    slider.addEventListener("mousemove", move);
+    slider.addEventListener("mouseleave", up);
+    slider.addEventListener("mouseup", up);
   };
 
   loadIndex = () => {
-
     fetch(`/api/products/wybor`)
       .then(res => res.json())
       .then(res => {
-    console.log('mount');
+        console.log("mount");
 
         const ids = res.response[0].polecane;
         this.setState({

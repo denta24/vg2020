@@ -6,9 +6,7 @@ import "./css/site.css";
 
 export default function Women() {
   const handleScroll = () => {
-    const slider = document.querySelector(
-      ".main-categories-container"
-    );
+    const slider = document.querySelector(".main-categories-container");
     let lastCategory = null;
     console.log(lastCategory);
     let isClicked = false;
@@ -55,23 +53,10 @@ export default function Women() {
       e.preventDefault();
     };
 
-    if (window.PointerEvent) {
-      console.log("pointer");
-
-      slider.addEventListener("pointerdown", down);
-      slider.addEventListener("pointermove", move);
-      slider.addEventListener("pointerup", up);
-    } else {
-      console.log("desc");
-
-      slider.addEventListener("touchdown", down);
-      slider.addEventListener("touchmove", move);
-      slider.addEventListener("touchup", up);
-      slider.addEventListener("mousedown", down);
-      slider.addEventListener("mousemove", move);
-      slider.addEventListener("mouseleave", up);
-      window.addEventListener("mouseup", up);
-    }
+    slider.addEventListener("mousedown", down);
+    slider.addEventListener("mousemove", move);
+    slider.addEventListener("mouseleave", up);
+    slider.addEventListener("mouseup", up);
   };
 
   const categoriesInfo = [
@@ -105,9 +90,9 @@ export default function Women() {
   return (
     <>
       <div class="headerSite">
-      <div className="productSelectedName productSelectedName--site">
-            <h2 className="productSelectedName__typeInfo">kobiety</h2>
-          </div>
+        <div className="productSelectedName productSelectedName--site">
+          <h2 className="productSelectedName__typeInfo">kobiety</h2>
+        </div>
       </div>
       <div className="container">
         <div className="category__text-background">

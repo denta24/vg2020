@@ -22,7 +22,6 @@ export default class Item extends Component {
     document.querySelector(".product__image").src = e.target.src;
   };
 
- 
   loadItem = () => {
     console.log("eeeeeeeeee");
     const href = `/api${window.location.pathname}`;
@@ -32,7 +31,7 @@ export default class Item extends Component {
         this.isLoaded = true;
         this.setState({ item: data }, () => {
           if (window.screen.width < 426) {
-            this.handleScroll();
+            // this.handleScroll();
           }
         });
 
@@ -43,8 +42,6 @@ export default class Item extends Component {
 
   async componentDidMount() {
     this.loadItem();
-    
-
   }
 
   handleAddingToCart = () => {
@@ -120,25 +117,11 @@ export default class Item extends Component {
       e.preventDefault();
     };
 
-    if (window.PointerEvent) {
-      console.log("pointer");
-
-      slider.addEventListener("pointerdown", down);
-      slider.addEventListener("pointermove", move);
-      slider.addEventListener("pointerup", up);
-    } else {
-      console.log("desc");
-
-      slider.addEventListener("touchdown", down);
-      slider.addEventListener("touchmove", move);
-      slider.addEventListener("touchup", up);
-      slider.addEventListener("mousedown", down);
-      slider.addEventListener("mousemove", move);
-      slider.addEventListener("mouseleave", up);
-      window.addEventListener("mouseup", up);
-    }
+    slider.addEventListener("mousedown", down);
+    slider.addEventListener("mousemove", move);
+    slider.addEventListener("mouseleave", up);
+    slider.addEventListener("mouseup", up);
     window.scrollTo(0, 0);
-
   };
 
   render() {
@@ -346,7 +329,9 @@ export default class Item extends Component {
             </div>
           </div>
           <div style={{ height: "5vh" }}></div>
-          <MoreItems />
+          <div className="container">
+            <MoreItems />
+          </div>
           <div style={{ height: "2vh" }}></div>
         </>
       );

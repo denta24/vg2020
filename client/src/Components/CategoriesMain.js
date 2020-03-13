@@ -52,7 +52,6 @@ export default class CategoriesMain extends Component {
 
     slider.addEventListener("mousedown", down);
     slider.addEventListener("mousemove", move);
-    slider.addEventListener("mouseleave", up);
     window.addEventListener("mouseup", up);
   };
 
