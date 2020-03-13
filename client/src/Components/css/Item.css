@@ -375,6 +375,7 @@ body {
     flex-basis: auto;
     object-fit: scale-down;
     flex-shrink: 0;
+    max-height: 70vh;
   }
   .product__mini {
     flex-direction: row;
