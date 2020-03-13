@@ -258,14 +258,14 @@
   font-family: "Montserrat";
   margin-left: 2px;
   font-size: 12px;
-  margin-left: 1vh;
+  margin: 0.5em 0 0.5em 1vh !important;
 }
 .product__prize {
+  display: inline;
   font-family: "Montserrat";
-  margin-left: 2px;
   font-size: 12px;
-  margin-left: 1vh;
   font-weight: 400;
+  margin: 0 0 0 1vh !important;
 }
 
 .catalog__filterFixed {
@@ -530,6 +530,13 @@
   }
   .route {
     padding: 1vh 1vw;
+  }
+
+  .item__product-name {
+    margin: 0.5em 5px !important;
+  }
+  .product__prize {
+    margin: 0  5px!important;
   }
   .numberOfItems {
     width: 100%;

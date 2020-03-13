@@ -153,6 +153,48 @@ MongoClient.connect(
       });
     });
 
+    // app.post("/api/newProduct", upload.array("images"), (req, res) => {
+    //   const formData = req.body;
+    //   const images = req.files;
+    //   const newProduct = {
+    //     id: formData.id,
+    //     name: formData.name,
+    //     mainCategory: formData.mainCategory,
+    //     category: formData.category,
+    //     subcategory: formData.subcategory,
+    //     prize: formData.prize * 1,
+    //     size: formData.size.split(","),
+    //     color: formData.color,
+    //     description: formData.description,
+    //     imgSrc: []
+    //   };
+    //   ///////////////////DODAWANIE DO BAZY DANYCH
+
+    //   const collection = db.db("VellutoGiorno").collection("test");
+    //   collection.findOne({}, { sort: { _id: -1 }, limit: 1 }).then(res => {
+    //     const lastID = res.id;
+    //     newProduct.id = lastID + 1;
+
+    //     images.forEach((image, index) => {
+    //       const imgName = newProduct.id + "_" + index;
+    //       const newPath = "uploads/" + imgName + ".jpg";
+
+    //       console.log(imgName, newPath);
+
+    //       newProduct.imgSrc = [...newProduct.imgSrc, newPath];
+
+    //       fs.rename(image.path, newPath, function(err) {
+    //         if (err) console.log("ERROR: " + err);
+    //       });
+
+    //       console.log(newProduct);
+    //       // collection.insertOne(newProduct);
+    //     });
+    //   });
+
+    //   res.send(`GOOD`);
+    // });
+
     if (process.env.NODE_ENV === "production") {
       app.use(express.static("client/build"));
       app.get("*", (req, res) => {
