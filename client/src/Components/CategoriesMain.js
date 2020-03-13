@@ -14,7 +14,7 @@ export default class CategoriesMain extends Component {
     let target = null;
     const down = e => {
       isClicked = true;
-      startPosition = e.clientX;
+      startPosition = e.screenX;
       lastCategory = document.querySelector(".category:last-child");
       const matrixPos = window
         .getComputedStyle(slider)
@@ -30,7 +30,7 @@ export default class CategoriesMain extends Component {
     const move = e => {
       if (isClicked) {
         const x = lastCategory.getBoundingClientRect().x.toFixed(2);
-        diff = e.clientX - startPosition;
+        diff = e.screenX - startPosition;
         if (transformX + diff > 0) return;
         if (x <= window.innerWidth * 0.99 - lastCategory.offsetWidth) {
           if (diff > 0) {
