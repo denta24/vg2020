@@ -5,14 +5,8 @@
   display: flex;
   flex-wrap: nowrap;
   transform: translateX(0);
-  overflow-x: scroll;
-  overflow-y: hidden;
-  -ms-overflow-style: none;
-  -ms-scroll-chaining: none;
-  -ms-scroll-snap-type: mandatory;
-  -ms-scroll-snap-points-x: snapInterval(0%, 100%);
-  user-select: "none";
-  width: 100vw;
+  touch-action: none;
+  /* user-select: "none"; */
 }
 
 @keyframes moveCategories {
@@ -37,11 +31,10 @@
   box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.178);
 }
 
-
 .container {
   width: 100%;
   margin: 0vh auto;
-  padding: 0 .2em;
+  padding: 0 1em;
 }
 
 .category__text-background {
@@ -116,7 +109,7 @@
   width: auto;
   user-select: "none";
   -webkit-user-select: none;
- /* -webkit-touch-callout: none; */
+  /* -webkit-touch-callout: none; */
 }
 .item.item--moreproducts {
   display: flex;
@@ -125,13 +118,26 @@
   flex-basis: 15%;
   margin: 0vh 0.6vw;
 }
-.product__prize{
+.product__prize {
   display: block;
 }
 .main-categories--bride {
   justify-content: center;
 }
 
+@media (max-width: 1366px) {
+  ..main-categories {
+    transform: translateX(0);
+    overflow-x: scroll;
+    overflow-y: hidden;
+    -ms-overflow-style: none;
+    -ms-scroll-chaining: none;
+    -ms-scroll-snap-type: mandatory;
+    -ms-scroll-snap-points-x: snapInterval(0%, 100%);
+    user-select: "none";
+    width: 100vw;
+  }
+}
 @media (max-width: 1024px) {
   .category {
     flex-basis: 25%;
@@ -187,32 +193,30 @@
 }
 
 @media (max-width: 375px) {
-.category__imgtext-bg{
-  padding: 5% 0;
-}
-.category {
-  flex-basis: 45%;
-  height: 40vh;
-}
-.item.item--moreproducts {
-  flex-basis: 35vw;
-  margin: 0 0 0 2vw;
-}
-.item.item--moreproducts .item__product-name {
-  font-size: 12px;
-}
-.item.item--moreproducts .product__prize {
-  font-size: 12px;
-}
-
-}
-
-
-@media (max-width: 320px) {
-  .category__imgtext-bg{
+  .category__imgtext-bg {
     padding: 5% 0;
   }
-  
+  .category {
+    flex-basis: 45%;
+    height: 40vh;
+  }
+  .item.item--moreproducts {
+    flex-basis: 35vw;
+    margin: 0 0 0 2vw;
+  }
+  .item.item--moreproducts .item__product-name {
+    font-size: 12px;
+  }
+  .item.item--moreproducts .product__prize {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 320px) {
+  .category__imgtext-bg {
+    padding: 5% 0;
+  }
+
   .item.item--moreproducts {
     flex-basis: 40vw;
     margin: 0 0 0 2vw;
@@ -223,6 +227,4 @@
   .item.item--moreproducts .product__prize {
     font-size: 10px;
   }
-  }
-
- 
+}
