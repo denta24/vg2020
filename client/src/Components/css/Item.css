@@ -93,7 +93,8 @@ body {
 
 .product__src {
   height: auto;
-
+max-height: auto;
+object-fit: scale-down;
   width: 100%;
 }
 
