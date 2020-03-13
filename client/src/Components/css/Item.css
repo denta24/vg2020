@@ -386,11 +386,11 @@ body {
     -ms-scroll-snap-points-x: snapInterval(0%, 100%);
     user-select: "none";
     align-content: flex-start;
+    flex-shrink: 0;
   }
   .product__mini-image {
     /* flex-grow: 1; */
     max-width: none;
-    flex-shrink: 0;
     width: 100%;
     height: auto;
     margin-top: 10px;
