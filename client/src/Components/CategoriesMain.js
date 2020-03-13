@@ -34,12 +34,12 @@ export default class CategoriesMain extends Component {
         if (transformX + diff > 0) return;
         if (x <= window.innerWidth * 0.99 - lastCategory.offsetWidth) {
           if (diff > 0) {
-            slider.style.transform = `translateX(${transformX + diff}px)`;
+            slider.style.webkitTransform  = `translateX(${transformX + diff}px)`;
           }
           return;
         }
 
-        slider.style.transform = `translateX(${transformX + diff}px)`;
+        slider.style.webkitTransform  = `translateX(${transformX + diff}px)`;
         // target.style.pointerEvents = "none";
       }
     };
@@ -56,9 +56,6 @@ export default class CategoriesMain extends Component {
       slider.addEventListener("pointerdown", down);
       slider.addEventListener("pointermove", move);
       slider.addEventListener("pointerup", up);
-      slider.addEventListener("touchdown", down);
-      slider.addEventListener("touchmove", move);
-      slider.addEventListener("touchup", up);
     } else {
       console.log("desc");
 
@@ -66,6 +63,9 @@ export default class CategoriesMain extends Component {
       slider.addEventListener("mousemove", move);
       slider.addEventListener("mouseleave", up);
       window.addEventListener("mouseup", up);
+      slider.addEventListener("touchdown", down);
+      slider.addEventListener("touchmove", move);
+      slider.addEventListener("touchup", up);
     }
   };
 
