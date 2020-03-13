@@ -185,7 +185,10 @@
 .category__imgtext-bg{
   padding: 5% 0;
 }
-
+.category {
+  flex-basis: 45%;
+  height: 40vh;
+}
 .item.item--moreproducts {
   flex-basis: 35vw;
   margin: 0 0 0 2vw;
