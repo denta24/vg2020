@@ -374,6 +374,7 @@ body {
     height: auto !important;
     flex-basis: auto;
     object-fit: scale-down;
+    flex-shrink: 0;
   }
   .product__mini {
     flex-direction: row;
@@ -391,15 +392,15 @@ body {
     flex-basis: auto;
   }
   .product__mini-image {
-    flex-grow: 1;
     max-width: none;
+    flex-shrink: 0;
     width: 100%;
-    height: auto;
     margin-top: 10px;
     margin-right: 15px;
     flex-shrink: 0;
     height: auto !important;
     flex-basis: auto;
+    display: flex;
   }
   .product__prize {
     font-size: 14px;
