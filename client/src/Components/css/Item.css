@@ -386,9 +386,10 @@ body {
     -ms-scroll-snap-type: mandatory;
     -ms-scroll-snap-points-x: snapInterval(0%, 100%);
     user-select: "none";
+    align-content: flex-start;
   }
   .product__mini-image {
-    flex-grow: 1;
+    /* flex-grow: 1; */
     max-width: none;
     flex-shrink: 0;
     width: 100%;
