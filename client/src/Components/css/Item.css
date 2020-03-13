@@ -386,6 +386,8 @@ body {
     -ms-scroll-snap-points-x: snapInterval(0%, 100%);
     user-select: "none";
     align-content: flex-start;
+    height: auto !important;
+    flex-basis: auto;
   }
   .product__mini-image {
     flex-grow: 1;
@@ -395,6 +397,8 @@ body {
     margin-top: 10px;
     margin-right: 15px;
     flex-shrink: 0;
+    height: auto !important;
+    flex-basis: auto;
   }
   .product__prize {
     font-size: 14px;
