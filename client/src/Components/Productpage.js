@@ -136,7 +136,6 @@ export default class Productpage extends Component {
   handleMaxSlider = e => {
     e.preventDefault();
     const maxprize = e.target.value * 1;
-    console.log(typeof maxprize, { maxprize });
 
     if (maxprize >= this.state.filters.minprize) {
       this.setState({
@@ -251,10 +250,8 @@ export default class Productpage extends Component {
   };
   handleBackgroundImg = () => {
     const { mainCat } = this.state.linkProps.state.pathName;
-    console.log(mainCat);
     const bg = document.querySelector(".productSiteWrapper");
     // bg.style.backgroundImage = `url("/photos/men.jpg")`;
-    console.log(mainCat);
 
     if (document.body.clientWidth > 425) {
       switch (mainCat) {
@@ -307,15 +304,15 @@ export default class Productpage extends Component {
       .childNodes;
 
     const tl = gsap.timeline({ defaults: { ease: "power3.inOut" } });
-    tl.from(titles, 2, { x: -300, opacity: 0, stagger: 0.2 })
-    .from(
+    tl.from(titles, 2, { x: -300, opacity: 0, stagger: 0.2 }).from(
       items,
       {
         y: 200,
         opacity: 0,
         stagger: 0.2,
         ease: "power0"
-      }, "-=1"
+      },
+      "-=1"
     );
   };
   componentDidMount() {
@@ -481,7 +478,6 @@ export default class Productpage extends Component {
         item => item.prize >= filters.minprize * 1
       );
     }
-    console.log(items);
 
     switch (this.state.sort) {
       case "time":
@@ -673,6 +669,14 @@ export default class Productpage extends Component {
                     e.preventDefault();
                     return this.handleURLSearch();
                   }}
+                  onPointerUp={e => {
+                    e.preventDefault();
+                    return this.handleURLSearch();
+                  }}
+                  onTouchUp={e => {
+                    e.preventDefault();
+                    return this.handleURLSearch();
+                  }}
                   value={this.state.filters.minprize}
                   step="0.01"
                   type="range"
@@ -686,6 +690,14 @@ export default class Productpage extends Component {
                   className="catalog__maxslider"
                   onChange={this.handleMaxSlider}
                   onMouseUp={e => {
+                    e.preventDefault();
+                    return this.handleURLSearch();
+                  }}
+                  onPointerUp={e => {
+                    e.preventDefault();
+                    return this.handleURLSearch();
+                  }}
+                  onTouchUp={e => {
                     e.preventDefault();
                     return this.handleURLSearch();
                   }}
