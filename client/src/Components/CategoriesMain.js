@@ -50,23 +50,23 @@ export default class CategoriesMain extends Component {
       e.preventDefault();
     };
 
-    if (window.PointerEvent) {
-      console.log("pointer");
+    // if (window.PointerEvent) {
+    //   console.log("1");
 
-      slider.addEventListener("pointerdown", down);
-      slider.addEventListener("pointermove", move);
-      slider.addEventListener("pointerup", up);
-    } else {
-      console.log("desc");
+    //   slider.addEventListener("pointerdown", down);
+    //   slider.addEventListener("pointermove", move);
+    //   slider.addEventListener("pointerup", up);
+    // } else {
+    //   console.log("2");
 
-      slider.addEventListener("mousedown", down);
-      slider.addEventListener("mousemove", move);
-      slider.addEventListener("mouseleave", up);
-      window.addEventListener("mouseup", up);
-      slider.addEventListener("touchdown", down);
-      slider.addEventListener("touchmove", move);
-      slider.addEventListener("touchup", up);
-    }
+    //   slider.addEventListener("mousedown", down);
+    //   slider.addEventListener("mousemove", move);
+    //   slider.addEventListener("mouseleave", up);
+    //   window.addEventListener("mouseup", up);
+    //   slider.addEventListener("touchstart", down);
+    //   slider.addEventListener("touchmove", move);
+    //   slider.addEventListener("touchend", up);
+    // }
   };
 
   componentDidMount() {

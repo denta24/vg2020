@@ -5,8 +5,14 @@
   display: flex;
   flex-wrap: nowrap;
   transform: translateX(0);
-  touch-action: pan-y ;
-  /* user-select: "none"; */
+  overflow-x: scroll;
+  overflow-y: hidden;
+  -ms-overflow-style: none;
+  -ms-scroll-chaining: none;
+  -ms-scroll-snap-type: mandatory;
+  -ms-scroll-snap-points-x: snapInterval(0%, 100%);
+  user-select: "none";
+  width: 100vw;
 }
 
 @keyframes moveCategories {
@@ -35,7 +41,7 @@
 .container {
   width: 100%;
   margin: 0vh auto;
-  padding: 0 1em;
+  padding: 0 .2em;
 }
 
 .category__text-background {
