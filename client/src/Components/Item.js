@@ -136,7 +136,7 @@ export default class Item extends Component {
             <img
               src={item}
               alt=""
-              className="product__src img-responsive"
+              className="product__src"
               onMouseOver={this.handleMiniImgClick}
             />
           </div>
