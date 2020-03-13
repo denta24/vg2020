@@ -93,8 +93,7 @@ body {
 
 .product__src {
   height: auto;
-max-height: auto;
-object-fit: scale-down;
+
   width: 100%;
 }
 
@@ -375,6 +374,8 @@ object-fit: scale-down;
     /* flex-basis: auto; */
     /* object-fit: scale-down; */
     /* max-height: 70vh; */
+    max-height: auto !important;
+    object-fit: scale-down;
   }
   .product__mini {
     flex-direction: row;
