@@ -5,7 +5,7 @@
   display: flex;
   flex-wrap: nowrap;
   transform: translateX(0);
-  touch-action: none ;
+  touch-action: pan-y ;
   /* user-select: "none"; */
 }
 
@@ -33,9 +33,9 @@
 
 
 .container {
-  width: 96vw;
+  width: 100%;
   margin: 0vh auto;
-  padding: 0 2vw;
+  padding: 0 1em;
 }
 
 .category__text-background {
