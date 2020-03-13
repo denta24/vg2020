@@ -66,8 +66,6 @@ MongoClient.connect(
     });
 
     app.get("/api/categories/:mainCategory/:category", (req, res) => {
-      ///////// READING CATEGORIES
-
       let rawcatdata = fs.readFileSync("categories.json");
       let { categories } = JSON.parse(rawcatdata);
 
@@ -93,19 +91,7 @@ MongoClient.connect(
           pathLink: { mainCat: `/${main.name[1]}`, category: path }
         }
       };
-
-      ///////// READING DATA
-      // let rawdata = fs.readFileSync("test.json");
-      // let kobiety = JSON.parse(rawdata);
-
-      // console.log("query:", req.query, "params:", req.params);
-      // ////////////////////////////
-
-      console.log("chce1");
-
       const collection = db.db("VellutoGiorno").collection("test");
-      console.log("chce2");
-
       collection
         .find({
           $and: [
@@ -120,35 +106,51 @@ MongoClient.connect(
             params: req.params,
             linkProps
           });
-          // db.close();
           console.log(req.params, main.name[0], itemSubCategory[0]);
         });
+    });
 
-      ///////// FILTERS DATA - PRAMS,QUERY
+    app.get("/api/allOrders", (req, res) => {
+      const newOrder = req.body;
 
-      // if (Object.keys(req.query).length !== 0) {
-      //   filteredWomans = kobiety.items.filter(item => {
-      //     return true;
-      //     // item.prize < req.query.maxprize * 20 &&
-      //     // item.prize > req.query.minprize * 20 &&
-      //     // item.size === req.query.sizes
-      //   });
-      // } else filteredWomans = kobiety.items;
+      const collection = db.db("VellutoGiorno").collection("orders");
+      console.log("chce");
+      collection
+        .find({})
+        .toArray()
+        .then(response => {
+          const orders = { orders: response };
+          res.json({
+            orders
+          });
+          console.log(response);
+        });
+    });
 
-      // // if (Object.keys(req.params).length !== 0) {
-      // //   filteredWomans = filteredWomans.filter(item => {
-      // //     return item.mainCategory === main.name[0];
-      // //   });
-      // // } else filteredWomans = kobiety.items;
+    app.get("/api/allProducts", (req, res) => {
+      const collection = db.db("VellutoGiorno").collection("test");
+      console.log("chce");
 
-      // // if (Object.keys(req.params).length !== 0) {
-      // //   filteredWomans = filteredWomans.filter(item => {
-      // //     // console.log(item.category.toLowerCase(),req.params.category);
-      // //     return item.category.toLowerCase() === itemSubCategory[0].toLowerCase();
-      // //   });
-      // // } else filteredWomans = kobiety.items;
+      collection
+        .find({})
+        .toArray()
+        .then(response => {
+          const items = { items: response };
+          res.json({
+            items: items
+          });
+          console.log(response);
+        });
+    });
 
-      // ///////// SENDING DATA
+    app.post("/api/newOrder", (req, res) => {
+      const newOrder = req.body;
+
+      const collection = db.db("VellutoGiorno").collection("orders");
+      console.log("newor", newOrder);
+      collection.findOne({}, { sort: { _id: -1 }, limit: 1 }).then(res => {
+        collection.insertOne(newOrder);
+      });
     });
 
     if (process.env.NODE_ENV === "production") {
