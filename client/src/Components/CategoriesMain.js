@@ -3,9 +3,7 @@ import "./css/CategoriesMain.css";
 
 export default class CategoriesMain extends Component {
   handleScroll = () => {
-    const slider = document.querySelector(
-      ".main-categories-container"
-    );
+    const slider = document.querySelector(".main-categories-container");
     let lastCategory = null;
     console.log(lastCategory);
     let isClicked = false;
@@ -58,12 +56,12 @@ export default class CategoriesMain extends Component {
       slider.addEventListener("pointerdown", down);
       slider.addEventListener("pointermove", move);
       slider.addEventListener("pointerup", up);
-    } else {
-      console.log("desc");
-
       slider.addEventListener("touchdown", down);
       slider.addEventListener("touchmove", move);
       slider.addEventListener("touchup", up);
+    } else {
+      console.log("desc");
+
       slider.addEventListener("mousedown", down);
       slider.addEventListener("mousemove", move);
       slider.addEventListener("mouseleave", up);
