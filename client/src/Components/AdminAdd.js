@@ -18,7 +18,9 @@ export default class AdminAdd extends Component {
       color: "black"
     },
     files: [],
-    preview: ["/photos/sukniaslubna.JPG", "/photos/sukniaslubna.JPG"]
+    preview: ["/photos/sukniaslubna.JPG", "/photos/sukniaslubna.JPG"],
+    isProductAdded: false,
+    messageBackend: ""
   };
 
   isLoaded = true;
@@ -90,10 +92,8 @@ export default class AdminAdd extends Component {
       })
         .then(res => res.json())
         .then(res => {
-          console.log("Dodałem użytkownika:");
           console.log(res);
-          const popup = document.querySelector(".popup");
-          popup.style.display = "block";
+          this.setState({ isProductAdded: true, messageBackend: res.message });
         });
     } else alert("Coś zle, popraw dane");
   };
@@ -241,20 +241,21 @@ export default class AdminAdd extends Component {
     ));
 
     const popup = [
-      <div className="popup">
+      <div style={{ display: "block" }} className="popup">
         <div
           onClick={e => {
-            document.querySelector(".popup").style.display = "none";
+            this.setState({ isProductAdded: false });
           }}
           className="popup__background"
         ></div>
         <div className="popup__content">
           <div className="popup__contentText">
             <div className="popup__title">Produkt dodano</div>
+            {this.state.messageBackend}
           </div>
           <button
             onClick={() => {
-              document.querySelector(".popup").style.display = "none";
+              this.setState({ isProductAdded: false });
             }}
             class="sendOrder"
           >
@@ -436,7 +437,7 @@ export default class AdminAdd extends Component {
               </div>
             </div>{" "}
           </div>
-          {popup}
+          {this.state.isProductAdded ? popup : null}
         </>
       );
     } else return <h2 className="product__name">Loading...</h2>;

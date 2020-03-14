@@ -140,6 +140,7 @@ MongoClient.connect(
           console.log(response);
         });
     });
+    [];
 
     app.get("/api/allProducts", (req, res) => {
       const collection = db.db("VellutoGiorno").collection("test");
@@ -157,7 +158,7 @@ MongoClient.connect(
         });
     });
 
-    app.post("/api/newOrder", (req, res) => {
+    app.post("/api/newOrder", (req, res, err) => {
       const newOrder = req.body;
 
       const collection = db.db("VellutoGiorno").collection("orders");
@@ -167,7 +168,7 @@ MongoClient.connect(
       });
     });
 
-    app.post("/api/newProduct", upload.array("images"), (req, res) => {
+    app.post("/api/newProduct", upload.array("images"), (req, resp) => {
       const formData = req.body;
       const images = req.files;
       const newProduct = {
@@ -201,12 +202,15 @@ MongoClient.connect(
           });
         });
 
-        collection.insertOne(newProduct);
-
-        console.log(newProduct);
+        if (err) {
+          resp.json({ message: "BŁAD!" });
+        } else {
+          resp.json({
+            message: `id: ${newProduct.id},  nazwa: ${newProduct.name}`
+          });
+        }
+        // collection.insertOne(newProduct);
       });
-
-      res.send(`GOOD`);
     });
 
     if (process.env.NODE_ENV === "production") {
