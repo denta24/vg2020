@@ -36,7 +36,7 @@ const uri =
 // SERVER STORE IMG
 const storage = multer.diskStorage({
   destination: function(req, file, cb) {
-    cb(null, "./uploads");
+    cb(null, "img");
   },
   filename: function(req, file, cb) {
     cb(null, file.originalname);
@@ -44,7 +44,7 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage: storage });
 
-app.use("/images", express.static("uploads"));
+app.use("/img", express.static("img"));
 
 ///////////////////////////////////////////////////////////////////////////
 
@@ -191,19 +191,18 @@ MongoClient.connect(
 
         images.forEach((image, index) => {
           const imgName = newProduct.id + "_" + index;
-          const newPath = "uploads/" + imgName + ".jpg";
-
-          console.log(imgName, newPath);
+          const newPath = "img/" + imgName + ".jpg";
 
           newProduct.imgSrc = [...newProduct.imgSrc, newPath];
 
           fs.rename(image.path, newPath, function(err) {
             if (err) console.log("ERROR: " + err);
           });
-
-          console.log(newProduct);
-          // collection.insertOne(newProduct);
         });
+
+        collection.insertOne(newProduct);
+
+        console.log(newProduct);
       });
 
       res.send(`GOOD`);

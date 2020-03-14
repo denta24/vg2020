@@ -74,7 +74,7 @@ export default class AdminAdd extends Component {
 
       productBody.append("imageLenght", files.length);
     }
-    console.log(productBody.get("image"));
+    console.log({ data });
     if (
       data.mainCategory !== "" &&
       data.category !== "" &&
