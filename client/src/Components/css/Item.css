@@ -300,6 +300,10 @@ body {
   font-size: 20px;
   margin: auto;
 }
+
+.product__mini .main-categories__arrow {
+  display: none;
+}
 @keyframes rotate {
   from {
     letter-spacing: 3px;
@@ -394,6 +398,17 @@ body {
     align-content: flex-start;
     height: auto !important;
     flex-basis: auto;
+    position: relative;
+  }
+  .product__mini::-webkit-scrollbar {
+    display: none;
+  }
+
+  .product__mini .main-categories__arrow {
+    display: flex;
+  }
+  .product__mini .main-categories__arrow:hover {
+    background: none;
   }
   .product__mini-image {
     max-width: none;

@@ -12,7 +12,20 @@ export default class Item extends Component {
   };
 
   isLoaded = false;
+  handleScrollClick = side => {
+    const slider = document.querySelector(".product__mini .product__mini");
+    const x = slider.scrollLeft;
 
+    const category = document.querySelector(".product__mini-image");
+    const categoryWidth = category.offsetWidth;
+
+    const scrollInX = 2 * side * categoryWidth + x;
+    slider.scroll({
+      top: 0,
+      left: scrollInX,
+      behavior: "smooth"
+    });
+  };
   componentWillMount() {
     window.scrollTo(0, 0);
   }
@@ -250,7 +263,21 @@ export default class Item extends Component {
           </div> */}
           <div className="product__header">
             <div className="product ">
-              <div className="product__mini">{mini_items}</div>
+              <div className="product__mini">
+                <div className="product__mini">{mini_items}</div>
+                <div
+                  onClick={() => this.handleScrollClick(-1)}
+                  className="main-categories__arrow main-categories__arrow--left "
+                >
+                  <i class="fas fa-chevron-left"></i>
+                </div>
+                <div
+                  onClick={() => this.handleScrollClick(1)}
+                  className="main-categories__arrow main-categories__arrow--right "
+                >
+                  <i class="fas fa-chevron-right"></i>
+                </div>
+              </div>
               <div className="product__photos">
                 <div className="product__imgContainer">
                   <img src={item.imgSrc[0]} alt="" className="product__image" />
