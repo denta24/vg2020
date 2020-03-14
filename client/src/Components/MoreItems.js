@@ -10,45 +10,34 @@ export default class CategoriesMain extends Component {
   };
 
   handleScroll = () => {
-    const slider = document.querySelector(
+    const slider1 = document.querySelector(
       ".main-categories-container--more-items"
     );
-    let lastCategory = null;
-    console.log(lastCategory);
     let isClicked = false;
     let startPosition = null;
     let diff;
     let transformX = 0;
-    let width = 0;
     let target = null;
+    let x = null;
     const down = e => {
       isClicked = true;
-      startPosition = e.clientX;
-      lastCategory = document.querySelector(".item--moreproducts:last-child");
-      const matrixPos = window
-        .getComputedStyle(slider)
-        .getPropertyValue("transform");
-
-      if (matrixPos !== "none") {
-        transformX = parseInt(matrixPos.split(",")[4]);
-      }
+      startPosition = e.screenX;
       target = e.target;
+      x = slider1.scrollLeft;
       e.preventDefault();
     };
 
     const move = e => {
-      if (isClicked && lastCategory.getBoundingClientRect) {
-        const x = lastCategory.getBoundingClientRect().x.toFixed(2);
-        diff = e.clientX - startPosition;
-        if (transformX + diff > 0) return;
-        if (x <= window.innerWidth * 0.99 - lastCategory.offsetWidth) {
-          if (diff > 0) {
-            slider.style.transform = `translateX(${transformX + diff}px)`;
-          }
-          return;
-        }
+      if (isClicked) {
+        diff = e.screenX - startPosition;
 
-        slider.style.transform = `translateX(${transformX + diff}px)`;
+        transformX = x - 1.2 * diff;
+        console.log({ diff, x, transformX });
+        slider1.scroll({
+          top: 0,
+          left: transformX
+        });
+
         target.style.pointerEvents = "none";
       }
     };
@@ -59,12 +48,29 @@ export default class CategoriesMain extends Component {
       e.preventDefault();
     };
 
-    slider.addEventListener("mousedown", down);
-    slider.addEventListener("mousemove", move);
-    slider.addEventListener("mouseleave", up);
-    slider.addEventListener("mouseup", up);
+    slider1.addEventListener("mousedown", down);
+    slider1.addEventListener("mousemove", move);
+    slider1.addEventListener("mouseup", up);
+    slider1.addEventListener("mouseleave", up);
   };
+  handleScrollClick = side => {
+    const slider = document.querySelector(
+      ".main-categories-container--more-items"
+    );
+    const x = slider.scrollLeft;
 
+    const category = document.querySelector(
+      ".main-categories-container--more-items .item"
+    );
+    const categoryWidth = category.offsetWidth;
+
+    const scrollInX = 2 * side * categoryWidth + x;
+    slider.scroll({
+      top: 0,
+      left: scrollInX,
+      behavior: "smooth"
+    });
+  };
   loadIndex = () => {
     fetch(`/api/products/wybor`)
       .then(res => res.json())
@@ -93,14 +99,27 @@ export default class CategoriesMain extends Component {
 
     return (
       <>
-        <div className="main-categories-container ">
-          <div className="category__text-container ">
-            <div className="category__text-background "></div>
+        <div className="category__text-container ">
+          <div className="category__text-background "></div>
 
-            <span className="category__text ">POLECANE PRODUKTY </span>
-          </div>
+          <span className="category__text ">POLECANE PRODUKTY </span>
+        </div>
+        <div className="main-categories-container ">
           <div className="main-categories main-categories-container--more-items">
             {products}
+          </div>
+
+          <div
+            onClick={() => this.handleScrollClick(-1)}
+            className="main-categories__arrow main-categories__arrow--left "
+          >
+            <i class="fas fa-chevron-left"></i>
+          </div>
+          <div
+            onClick={() => this.handleScrollClick(1)}
+            className="main-categories__arrow main-categories__arrow--right "
+          >
+            <i class="fas fa-chevron-right"></i>
           </div>
         </div>
       </>

@@ -6,51 +6,32 @@ import "./css/site.css";
 
 export default function Men() {
   const handleScroll = () => {
-    const slider = document.querySelector(
-      ".main-categories-container.main-categories--men"
-    );
-    const lastCategory = document.querySelector(".category:last-child");
+    const slider = document.querySelector(".main-categories");
     let isClicked = false;
     let startPosition = null;
     let diff;
     let transformX = 0;
-    let width = 0;
     let target = null;
-
+    let x = null;
     const down = e => {
       isClicked = true;
-      startPosition = e.clientX;
-
-      const matrixPos = window
-        .getComputedStyle(slider)
-        .getPropertyValue("transform");
-
-      if (matrixPos !== "none") {
-        transformX = parseInt(matrixPos.split(",")[4]);
-      }
+      startPosition = e.screenX;
       target = e.target;
+      x = slider.scrollLeft;
       e.preventDefault();
     };
 
     const move = e => {
       if (isClicked) {
-        console.log(
-          lastCategory.getBoundingClientRect().x,
-          window.innerWidth * 0.99 - lastCategory.offsetWidth
-        );
-        diff = e.clientX - startPosition;
-        if (transformX + diff > 0) return;
-        if (
-          lastCategory.getBoundingClientRect().x <=
-          window.innerWidth * 0.99 - lastCategory.offsetWidth
-        ) {
-          if (diff > 0) {
-            slider.style.transform = `translateX(${transformX + diff}px)`;
-          }
-          return;
-        }
+        diff = e.screenX - startPosition;
 
-        slider.style.transform = `translateX(${transformX + diff}px)`;
+        transformX = x - 1.2 * diff;
+        console.log({ diff, x, transformX });
+        slider.scroll({
+          top: 0,
+          left: transformX
+        });
+
         target.style.pointerEvents = "none";
       }
     };
@@ -63,8 +44,21 @@ export default function Men() {
 
     slider.addEventListener("mousedown", down);
     slider.addEventListener("mousemove", move);
-    slider.addEventListener("mouseleave", up);
-    slider.addEventListener("mouseup", up);
+    window.addEventListener("mouseup", up);
+  };
+  const handleScrollClick = side => {
+    const slider = document.querySelector(".main-categories");
+    const x = slider.scrollLeft;
+
+    const category = document.querySelector(".main-categories .category");
+    const categoryWidth = category.offsetWidth;
+
+    const scrollInX = 2 * side * categoryWidth + x;
+    slider.scroll({
+      top: 0,
+      left: scrollInX,
+      behavior: "smooth"
+    });
   };
 
   const categoriesInfo = [
@@ -108,6 +102,18 @@ export default function Men() {
           <span className="category__text">PRZEGLADAJ WEDŁUG KATEGORII</span>
           <div className="main-categories-container main-categories--men">
             <div className="main-categories">{categories}</div>
+            <div
+              onClick={() => handleScrollClick(-1)}
+              className="main-categories__arrow main-categories__arrow--left "
+            >
+              <i class="fas fa-chevron-left"></i>
+            </div>
+            <div
+              onClick={() => handleScrollClick(1)}
+              className="main-categories__arrow main-categories__arrow--right "
+            >
+              <i class="fas fa-chevron-right"></i>
+            </div>
           </div>
         </div>
       </div>
