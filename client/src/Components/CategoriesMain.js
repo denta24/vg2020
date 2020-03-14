@@ -1,6 +1,6 @@
 import React, { Component, useEffect } from "react";
 import "./css/CategoriesMain.css";
-
+import smoothscroll from 'smoothscroll-polyfill';
 export default class CategoriesMain extends Component {
   handleScroll = () => {
     const slider = document.querySelector(".main-categories");
