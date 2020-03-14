@@ -95,7 +95,7 @@ export default class AdminAdd extends Component {
           const popup = document.querySelector(".popup");
           popup.style.display = "block";
         });
-    } else alert("Popraw dane");
+    } else alert("Coś zle, popraw dane");
   };
 
   handleNameInput = e => {
