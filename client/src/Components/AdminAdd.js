@@ -92,10 +92,9 @@ export default class AdminAdd extends Component {
         .then(res => {
           console.log("Dodałem użytkownika:");
           console.log(res);
+          const popup = document.querySelector(".popup");
+          popup.style.display = "block";
         });
-
-      const popup = document.querySelector(".popup");
-      popup.style.display = "block";
     } else alert("Popraw dane");
   };
 
