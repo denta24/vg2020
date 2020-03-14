@@ -12,6 +12,7 @@
   -ms-scroll-snap-type: mandatory;
   -ms-scroll-snap-points-x: snapInterval(0%, 100%);
   user-select: "none";
+  -webkit-overflow-scrolling: touch
 }
 .main-categories::-webkit-scrollbar {
   display: none;

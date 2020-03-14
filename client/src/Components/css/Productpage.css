@@ -220,6 +220,7 @@
   letter-spacing: 0.5px;
   /* transform: translate(0, -50px); */
   /* background-color: rgb(104, 104, 104); */
+  -webkit-overflow-scrolling: touch;
 }
 
 .item__imgPicture {
@@ -536,7 +537,7 @@
     margin: 0.5em 5px !important;
   }
   .product__prize {
-    margin: 0  5px!important;
+    margin: 0 5px !important;
   }
   .numberOfItems {
     width: 100%;
