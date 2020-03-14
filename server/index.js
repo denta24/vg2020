@@ -44,7 +44,7 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage: storage });
 
-app.use("/api/images", express.static("uploads"));
+app.use("/images", express.static("uploads"));
 
 ///////////////////////////////////////////////////////////////////////////
 
