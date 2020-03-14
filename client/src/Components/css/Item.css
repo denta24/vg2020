@@ -211,21 +211,24 @@ body {
 
 .product__buttons {
   display: flex;
-  margin-top: 20px;
+  flex-wrap: wrap;
+  justify-content: start;
 }
 .product__button {
   padding: 10px 25px;
   margin: 0px 5px;
+  min-width: 70px;
   font-family: "Montserrat";
   font-size: 12px;
   border: 1px solid rgb(209, 209, 209);
   background: none;
   cursor: pointer;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  /* letter-spacing: 1px; */
   -webkit-transition: all 0.1s;
   -moz-transition: all 0.1s;
   transition: all 0.1s;
+  margin-top: 5px;
 }
 .product__button:hover {
   background-color: rgb(77, 77, 77);
