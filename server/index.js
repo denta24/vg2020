@@ -191,11 +191,12 @@ MongoClient.connect(
 
         images.forEach((image, index) => {
           const imgName = newProduct.id + "_" + index;
-          const newPath = "img/" + imgName + ".jpg";
+          const newPath = "/img/" + imgName + ".jpg";
+          const srcPath = "img/" + imgName + ".jpg";
 
           newProduct.imgSrc = [...newProduct.imgSrc, newPath];
 
-          fs.rename(image.path, newPath, function(err) {
+          fs.rename(image.path, srcPath, function(err) {
             if (err) console.log("ERROR: " + err);
           });
         });
