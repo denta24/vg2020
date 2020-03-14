@@ -209,7 +209,7 @@ MongoClient.connect(
             message: `id: ${newProduct.id},  nazwa: ${newProduct.name}`
           });
         }
-        // collection.insertOne(newProduct);
+        collection.insertOne(newProduct);
       });
     });
 
