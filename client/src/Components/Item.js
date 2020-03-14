@@ -19,7 +19,7 @@ export default class Item extends Component {
     const category = document.querySelector(".product__mini-image");
     const categoryWidth = category.offsetWidth;
 
-    const scrollInX = 2 * side * categoryWidth + x;
+    const scrollInX = side * categoryWidth + x;
     slider.scroll({
       top: 0,
       left: scrollInX,
