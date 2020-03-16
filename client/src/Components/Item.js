@@ -150,16 +150,14 @@ export default class Item extends Component {
       const mini_items = item.imgSrc.map(item => (
         <>
           <div className="product__mini-image">
-          <LightgalleryItem src={item}>
-
-            <img
-              src={item}
-              alt=""
-              className="product__src"
-              onMouseOver={this.handleMiniImgClick}
-            />
-          </LightgalleryItem>
-
+            <LightgalleryItem src={item}>
+              <img
+                src={item}
+                alt=""
+                className="product__src"
+                onMouseOver={this.handleMiniImgClick}
+              />
+            </LightgalleryItem>
           </div>
         </>
       ));
@@ -349,10 +347,9 @@ export default class Item extends Component {
                       <p>
                         <b>21,99 zł</b> przesyłka pobraniowa
                       </p>
-                      W przypadku wysyłki za granicę koszt zgodnie z cennikiem
-                      Poczty Polskiej.
                       <p style={{ textAlign: "center" }}>
-                        787-073-956 / 888-431-936 lub biuro@podhaler.pl
+                        W przypadku wysyłki za granicę koszt zgodnie z cennikiem
+                        Poczty Polskiej.
                       </p>
                     </div>
                   </div>

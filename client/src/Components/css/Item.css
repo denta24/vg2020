@@ -409,6 +409,7 @@ body {
 
   .product__mini .main-categories__arrow {
     display: flex;
+    opacity: 0.3;
   }
   .product__mini .main-categories__arrow:hover {
     background: none;
