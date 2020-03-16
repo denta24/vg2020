@@ -16,11 +16,12 @@ export default function AdminLogin() {
       .then(res => {
         console.log(res);
         const { isAuth, key } = res;
-        if (isAuth)
+        if (isAuth) {
           Cookies.set("VGadminKEY", key, {
             expires: 1
           });
-        else alert("Złe dane");
+          window.location = "/admin";
+        } else alert("Złe dane");
       });
   };
   return (
@@ -38,7 +39,7 @@ export default function AdminLogin() {
           }}
           type="text"
           name="login"
-        placeholder="login"
+          placeholder="login"
           value={login}
           id="login"
         />
@@ -49,8 +50,8 @@ export default function AdminLogin() {
           value={password}
           type="password"
           name="password"
-        placeholder="haslo"
-        id="password"
+          placeholder="haslo"
+          id="password"
         />
         <input onClick={handleSubmit} type="button" value="Zaloguj" />
       </form>

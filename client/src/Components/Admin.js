@@ -13,19 +13,18 @@ export default function Admin() {
   const [auth, setauth] = useState(false);
 
   useEffect(() => {
-    console.log(auth);
+    console.log("zalogowano/wylogowano");
   }, [auth]);
 
   useEffect(() => {
     const key = Cookies.get("VGadminKEY");
-    if (key === "eyJrIjoiT0tTcG1pUlY2RnVKZTFVaDFsNFZXdE9ZWmNrMkZYbk")
+    if (key === "eyJrIjoiT0tTcG1pUlY2RnVKZTFVaDFsNFZXdE9ZWmNrMkZYbk") {
       setauth(true);
+    }
+
     console.log("render");
   }, []);
-
-
-  useEffect(() => {
-  }, [auth]);
+ 
   const logged = [
     <>
       <AdminMenu />
