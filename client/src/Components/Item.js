@@ -1,15 +1,21 @@
 import React, { Component } from "react";
+import { LightgalleryProvider, LightgalleryItem } from "react-lightgallery";
 import "./css/Item.css";
 import MoreItems from "./MoreItems.js";
-import { Link } from "react-router-dom";
-import CategoriesMain from "./CategoriesMain.js";
+import "lightgallery.js/dist/css/lightgallery.css";
 
 export default class Item extends Component {
   state = {
     item: { id: "", name: "", prize: 0, imgSrc: [] },
-    items: [{ id: "", name: "", prize: 0, imgSrc: [''] }],
+    items: [{ id: "", name: "", prize: 0, imgSrc: [""] }],
     selectedSize: []
   };
+
+  measures = [
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTpAZ9Fyv8ea0HK_vunNMt-ghH1KElHfoYlzw__82iLx0GyzJw9",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTdmVMHqhtNqcI-Jn7TWqDMJ89djbtfGpc_T5QMJKG8B2ceRonn",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSgw37lWeKW15pAoXpS3600hvcJ8BISxMSzoteLiA9tIK0AlmTp"
+  ];
 
   isLoaded = false;
   handleScrollClick = side => {
@@ -31,7 +37,6 @@ export default class Item extends Component {
   }
 
   handleMiniImgClick = e => {
-    console.log(e.target.src);
     document.querySelector(".product__image").src = e.target.src;
   };
 
@@ -90,7 +95,6 @@ export default class Item extends Component {
     let startPosition = null;
     let diff;
     let transformX = 0;
-    let width = 0;
     let target = null;
     const down = e => {
       isClicked = true;
@@ -139,19 +143,23 @@ export default class Item extends Component {
 
   render() {
     if (this.isLoaded) {
-      const { item, items } = this.state;
+      const { item } = this.state;
       // console.log(this.props, "propsyyy");
 
       // console.log(item);
       const mini_items = item.imgSrc.map(item => (
         <>
           <div className="product__mini-image">
+          <LightgalleryItem src={item}>
+
             <img
               src={item}
               alt=""
               className="product__src"
               onMouseOver={this.handleMiniImgClick}
             />
+          </LightgalleryItem>
+
           </div>
         </>
       ));
@@ -165,32 +173,6 @@ export default class Item extends Component {
           {size}
         </button>
       ));
-
-      const moreProducts = items.map(item => {
-        return (
-          <>
-            <div key={item.id} className="item item--more-products">
-              <div className="item__picture item__picture--more-products">
-                <a href={`/product/${item.id}`}>
-                  <img
-                    className="item__imgPicture"
-                    src={item.imgSrc[0]}
-                    onMouseOver={e => {
-                      e.target.src = item.imgSrc[1];
-                    }}
-                    onMouseLeave={e => {
-                      e.target.src = item.imgSrc[0];
-                    }}
-                    alt=""
-                  />
-                </a>
-              </div>
-              <p className="item__product-name">{item.name}</p>
-              <p className="product__prize">{item.prize} PLN</p>
-            </div>{" "}
-          </>
-        );
-      });
 
       const popup = [
         <div className="popup">
@@ -264,7 +246,9 @@ export default class Item extends Component {
           <div className="product__header">
             <div className="product ">
               <div className="product__mini">
-                <div className="product__mini">{mini_items}</div>
+                <div className="product__mini">
+                  <LightgalleryProvider>{mini_items}</LightgalleryProvider>
+                </div>
                 <div
                   onClick={() => this.handleScrollClick(-1)}
                   className="main-categories__arrow main-categories__arrow--left "
@@ -280,7 +264,19 @@ export default class Item extends Component {
               </div>
               <div className="product__photos">
                 <div className="product__imgContainer">
-                  <img src={item.imgSrc[0]} alt="" className="product__image" />
+                  <LightgalleryProvider>
+                    <LightgalleryItem src={item.imgSrc[0]} group="images">
+                      <img
+                        src={item.imgSrc[0]}
+                        alt=""
+                        className="product__image"
+                      />
+                    </LightgalleryItem>
+                    {item.imgSrc.map((source, idx) => {
+                      if (idx !== 0)
+                        return <LightgalleryItem group="images" src={source} />;
+                    })}
+                  </LightgalleryProvider>
                 </div>
               </div>
               <div className="product__info ">
@@ -325,6 +321,7 @@ export default class Item extends Component {
                     </div>
                     <div className="product__expanding ">
                       {item.description}
+                      <br></br>
                     </div>
                   </div>
 
@@ -357,6 +354,26 @@ export default class Item extends Component {
                       <p style={{ textAlign: "center" }}>
                         787-073-956 / 888-431-936 lub biuro@podhaler.pl
                       </p>
+                    </div>
+                  </div>
+
+                  <div className="product__description">
+                    <div className="product__clickToInfo ">
+                      <LightgalleryProvider>
+                        <LightgalleryItem
+                          src={this.measures[0]}
+                          group="measures"
+                        >
+                          Jak się dobrze mierzyć?
+                        </LightgalleryItem>
+
+                        {this.measures.map((src, idx) => {
+                          if (idx !== 0)
+                            return (
+                              <LightgalleryItem group="measures" src={src} />
+                            );
+                        })}
+                      </LightgalleryProvider>
                     </div>
                   </div>
                 </div>

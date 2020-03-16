@@ -10,8 +10,6 @@ body,
   height: 100% !important;
   width: 100% !important;
   overflow-x: hidden;
-  position: relative;
-  z-index: 999;
 }
 
 .popup {
@@ -53,12 +51,12 @@ body,
 }
 .popup__contentText {
   text-align: justify;
-  
+
   padding: 3vh 3vw;
 }
-.popup .singleCartItem__img{
+.popup .singleCartItem__img {
   width: 100%;
-    text-indent: 0;
+  text-indent: 0;
 }
 @media (max-width: 1366px) {
   .popup__content {
