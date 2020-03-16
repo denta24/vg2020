@@ -7,7 +7,7 @@ import CategoriesMain from "./CategoriesMain.js";
 export default class Item extends Component {
   state = {
     item: { id: "", name: "", prize: 0, imgSrc: [] },
-    items: [{ id: "", name: "", prize: 0, imgSrc: [] }],
+    items: [{ id: "", name: "", prize: 0, imgSrc: [''] }],
     selectedSize: []
   };
 
@@ -339,16 +339,24 @@ export default class Item extends Component {
                     >
                       Dostawa
                     </div>
-                    <div className="product__expanding ">
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                      Nisi explicabo earum voluptatem laudantium sapiente soluta
-                      fuga repellendus repudiandae, nam non ad, minus labore
-                      tenetur veniam, numquam ullam officia esse corrupti!Fuga,
-                      iusto. Reprehenderit at veritatis cumque voluptatum ab
-                      quaerat nihil reiciendis et quos rerum consectetur minus
-                      excepturi perferendis in optio totam maiores corporis,
-                      distinctio nesciunt voluptatibus ipsam velit odio.
-                      Explicabo!
+                    <div className="product__expanding product__expanding--delivery ">
+                      <p style={{ textAlign: "center" }}>
+                        Dostawę zamówionych produktów realizujemy za
+                        pośrednictwem firmy kurierskiej DPD
+                      </p>
+                      <p>Koszt przesyłki naliczamy zgodnie z taryfikatorem:</p>
+                      <p>
+                        <b>13,99 zł</b> przesyłka za wcześniejszym przelewem na
+                        konto
+                      </p>
+                      <p>
+                        <b>21,99 zł</b> przesyłka pobraniowa
+                      </p>
+                      W przypadku wysyłki za granicę koszt zgodnie z cennikiem
+                      Poczty Polskiej.
+                      <p style={{ textAlign: "center" }}>
+                        787-073-956 / 888-431-936 lub biuro@podhaler.pl
+                      </p>
                     </div>
                   </div>
                 </div>

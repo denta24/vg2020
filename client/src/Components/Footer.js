@@ -39,13 +39,13 @@ export default function Footer() {
             <span>Polub nas!</span>
           </div>
 
-          {/* <div
+          <div
             className="fb-page"
             data-href="https://www.facebook.com/VellutoGiorno"
             data-width="380"
             data-hide-cover="false"
             data-show-facepile="true"
-          ></div> */}
+          ></div>
         </div>
       </footer>
       <div className="black">

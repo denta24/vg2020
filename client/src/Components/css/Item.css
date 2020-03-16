@@ -288,6 +288,10 @@ body {
   width: 100%;
   margin: 0.8em 0;
 }
+.product__expanding--delivery{
+  padding-left: 2em;
+
+}
 .product__expanding--open {
   max-height: 100vh;
   transition: max-height 0.4s ease-in-out;
