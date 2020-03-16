@@ -221,8 +221,12 @@
   /* transform: translate(0, -50px); */
   /* background-color: rgb(104, 104, 104); */
   -webkit-overflow-scrolling: touch;
+  display: flex;
+  flex-direction: column;
 }
-
+.item__picture{
+  flex-grow: 1;
+}
 .item__imgPicture {
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.048), 0 3px 6px rgba(0, 0, 0, 0.014);
   width: 100%;
