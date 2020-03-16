@@ -288,9 +288,8 @@ body {
   width: 100%;
   margin: 0.8em 0;
 }
-.product__expanding--delivery{
+.product__expanding--delivery {
   padding-left: 2em;
-
 }
 .product__expanding--open {
   max-height: 100vh;
@@ -374,6 +373,7 @@ body {
     margin-top: 5vh;
     /* flex-direction: column; */
     padding: 0 5px;
+    padding-bottom: 1.5em;
   }
   .product__photos {
     display: none;
