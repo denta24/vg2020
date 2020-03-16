@@ -74,6 +74,7 @@
   .about-column__divider {
     flex-grow: 1;
     width: 50% !important;
+    box-shadow: none !important;
   }
 }
 @media (max-width: 425px) {
@@ -82,12 +83,14 @@
   }
   .about-column {
     flex-direction: column;
-    margin: 0em 0 4em !important;
+    margin: 0em 0 0em !important;
+ 
   }
   .about-column__divider {
     flex-grow: 1;
     width: 100% !important;
-    margin: 0  0 2em;
+    padding-top: 1em;
+    padding-bottom: 3em;
   }
   .about-column__divider.about-column--photo {
     order: 0;
