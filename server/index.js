@@ -140,7 +140,6 @@ MongoClient.connect(
           console.log(response);
         });
     });
-    [];
 
     app.get("/api/allProducts", (req, res) => {
       const collection = db.db("VellutoGiorno").collection("test");
@@ -211,6 +210,18 @@ MongoClient.connect(
         }
         collection.insertOne(newProduct);
       });
+    });
+
+    app.post("/api/AdminLogin", (req, res) => {
+      const _login = "kacztex";
+      const _password = "kacztex123";
+
+      const { login, password } = req.body;
+      console.log(login, password);
+
+      if (login === _login && password === _password)
+        res.json({ isAuth: true , key: "eyJrIjoiT0tTcG1pUlY2RnVKZTFVaDFsNFZXdE9ZWmNrMkZYbk"});
+      else res.json({ isAuth: false });
     });
 
     if (process.env.NODE_ENV === "production") {

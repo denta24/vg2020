@@ -1,4 +1,5 @@
 import React from "react";
+import Cookies from "js-cookie";
 
 export default function AdminMenu() {
   return (
@@ -20,6 +21,15 @@ export default function AdminMenu() {
           </a>
           <a className="panel__menuItem" href="/admin/orders">
             Zamowienia
+          </a>
+          <a
+            onClick={e => {
+              Cookies.remove("VGadminKEY");
+            }}
+            className="panel__menuItem"
+            href="/admin"
+          >
+            wyloguj
           </a>
         </div>
       </div>

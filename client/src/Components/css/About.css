@@ -78,6 +78,7 @@
   }
 }
 @media (max-width: 425px) {
+  
   .about {
     display: none;
   }
@@ -94,5 +95,8 @@
   }
   .about-column__divider.about-column--photo {
     order: 0;
+  }
+  .about-column__big-text{
+    font-size: 24px !important;
   }
 }

@@ -10,15 +10,18 @@ export default function Footer() {
             <span>Dane kontaktowe</span>
           </div>
           <div className="title">
-            <i className="fas fa-mobile-alt"></i>
-            534 325 980
+            <a href="tel:534325980">
+              <i className="fas fa-mobile-alt"></i>534 325 980
+            </a>
           </div>
           <div className="title">
-            <i className="fas fa-mobile-alt"></i>600 441 542
+            <a href="tel:600441542">
+              <i className="fas fa-mobile-alt"></i>600 441 542
+            </a>
           </div>
           <div className="title">
             <i className="fas fa-envelope"></i>
-            kacztex@wp.pl
+            <a href="mailto:info@vellutogiorno.pl">info@vellutogiorno.pl</a>
           </div>
         </div>
         <div className="divider ">
@@ -49,7 +52,7 @@ export default function Footer() {
         </div>
       </footer>
       <div className="black">
-        &#169;Velluto Giorno 2020. Wszystkie prawa zastrzeżone /{" "}  
+        &#169;Velluto Giorno 2020. Wszystkie prawa zastrzeżone /{" "}
         <a href="/polityka-prywatnosci">Polityka prywatności</a>
       </div>
     </>
