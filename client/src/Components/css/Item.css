@@ -373,7 +373,7 @@ body {
     margin-top: 5vh;
     /* flex-direction: column; */
     padding: 0 5px;
-    padding-bottom: 1.5em;
+    padding-bottom: 1em;
   }
   .product__photos {
     display: none;

@@ -19,6 +19,8 @@ export default class AdminAdd extends Component {
     },
     files: [],
     preview: ["/photos/sukniaslubna.JPG", "/photos/sukniaslubna.JPG"],
+    measure: [""],
+    measureFiles: [],
     isProductAdded: false,
     messageBackend: ""
   };
@@ -62,7 +64,7 @@ export default class AdminAdd extends Component {
 
   sendToBackEnd = e => {
     const data = this.state.item;
-    const { files } = this.state;
+    const { files, measureFiles } = this.state;
     function getFormData(object) {
       const formData = new FormData();
       Object.keys(object).forEach(key => formData.append(key, object[key]));
@@ -73,10 +75,18 @@ export default class AdminAdd extends Component {
       files.forEach((file, index) => {
         productBody.append(`images`, file, file.name);
       });
-
       productBody.append("imageLenght", files.length);
     }
-    console.log({ data });
+    if (files) {
+      measureFiles.forEach((file, index) => {
+        productBody.append(`images`, file, file.name);
+      });
+      productBody.append("measureLength", measureFiles.length);
+    }
+
+    for (var pair of productBody.entries()) {
+      console.log(pair[0] + ", " + pair[1]);
+    }
     if (
       data.mainCategory !== "" &&
       data.category !== "" &&
@@ -165,6 +175,7 @@ export default class AdminAdd extends Component {
       }
     });
   };
+
   handleDescriptionInput = e => {
     const description = e.target.value;
     this.setState({
@@ -211,10 +222,41 @@ export default class AdminAdd extends Component {
       }
     }
   };
+  handleLoadImgMeasure = e => {
+    if (e.target.files.length) {
+      const { measureFiles } = this.state;
+      const [file] = e.target.files;
+      measureFiles.push(file);
+
+      this.setState({
+        measureFiles
+      });
+      // };
+      for (let i = 0; i < measureFiles.length; i++) {
+        const reader = new FileReader();
+        this.setState({
+          measure: []
+        });
+        reader.addEventListener(
+          "load",
+          () => {
+            this.setState(prevState => ({
+              measure: [...prevState.measure, reader.result]
+            }));
+          },
+          false
+        );
+
+        if (measureFiles[i]) {
+          reader.readAsDataURL(measureFiles[i]);
+        }
+      }
+    }
+  };
 
   render() {
-    const { item, preview } = this.state;
-
+    const { item, preview, measure, measureFiles } = this.state;
+    console.log({ measure, measureFiles });
     const [categories] = this.categoriesNav.filter(
       item => item.name[0] === this.state.item.mainCategory
     );
@@ -323,6 +365,7 @@ export default class AdminAdd extends Component {
               onChange={this.handleSizeInput}
             />
 
+            {/* ///////////////////////// */}
             <label for="picture">Zdjęcia:</label>
 
             <input
@@ -346,6 +389,30 @@ export default class AdminAdd extends Component {
             >
               X
             </button>
+
+            {/* ///////////////////////// */}
+            <label for="picture">Tabela rozmiarow:</label>
+
+            <input
+              onChange={this.handleLoadImgMeasure}
+              type="file"
+              id="measure"
+              name="measure"
+              accept="image/jpeg"
+            />
+            <button
+              style={{ width: "40px" }}
+              onClick={() => {
+                this.setState({
+                  measure: [],
+                  measureFiles: []
+                });
+              }}
+            >
+              X
+            </button>
+            {/* ///////////////////////// */}
+
             <label for="description">Opis:</label>
             <textarea
               onChange={this.handleDescriptionInput}
@@ -427,13 +494,32 @@ export default class AdminAdd extends Component {
                     distinctio nesciunt voluptatibus ipsam velit odio.
                     Explicabo!
                   </div>
-                  <h2 className="product__color product__color--bold">
-                    Kategoria w menu: <span>{item.mainCategory}</span>
-                    <br /> Kategoria w submenu: <span> {item.category}</span>
-                    <br /> Kategoria w filtrach: <span>{item.subcategory}</span>
-                  </h2>
-                  <h2 className="product__color"></h2>
                 </div>
+
+                <div className="product__description product__expanding--open">
+                  <div
+                    onClick={e => {
+                      e.target.nextSibling.classList.toggle(
+                        "product__expanding--open"
+                      );
+                    }}
+                    className="product__clickToInfo "
+                  >
+                    Tabela rozmiarów
+                  </div>
+                  <div className="product__expanding product__expanding--open">
+                    <div className="product__imgContainer">
+                      <img src={measure[0]} alt="" className="product__image" />
+                    </div>
+                  </div>
+                </div>
+
+                <h2 className="product__color product__color--bold">
+                  Kategoria w menu: <span>{item.mainCategory}</span>
+                  <br /> Kategoria w submenu: <span> {item.category}</span>
+                  <br /> Kategoria w filtrach: <span>{item.subcategory}</span>
+                </h2>
+                <h2 className="product__color"></h2>
               </div>
             </div>{" "}
           </div>

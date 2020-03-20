@@ -35,9 +35,11 @@ export default function About() {
         <div className="about-column__divider">
           <span className="about-column__big-text">Lata doświadczenia</span>
           <br></br>
-          Najwiekszy salon ślubny na poudniu Polski. W ciąłej sprzedaży około
-          150 sukni. Projektujemy, szyjemy suknie ślubne. Realizujemy
-          indywidualne zamówienia
+          Istniejemy od 1997 roku i jesteśmy gotowi, aby stać się wiodącym
+          graczem na światowym rynku mody oraz udowodnić, że ubrania niedrogie
+          mogą odpowiadać najnowszym trendom. Za pośrednictwem mediów
+          społecznościowych chcemy pokazywać Ci najnowsze i zawsze aktualne
+          trendy oraz modowe inspiracje.
         </div>
       </div>
     </>
