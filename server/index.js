@@ -180,10 +180,11 @@ MongoClient.connect(
         size: formData.size.split(","),
         color: formData.color,
         description: formData.description,
-        imgSrc: []
+        imgSrc: [],
+        measureSrc: []
       };
       ///////////////////DODAWANIE DO BAZY DANYCH
-
+      console.log(req.body);
       const collection = db.db("VellutoGiorno").collection("test");
       collection.findOne({}, { sort: { _id: -1 }, limit: 1 }).then(res => {
         const lastID = res.id;
@@ -194,16 +195,20 @@ MongoClient.connect(
           const newPath = "/img/" + imgName + ".jpg";
           const srcPath = "img/" + imgName + ".jpg";
 
-          newProduct.imgSrc = [...newProduct.imgSrc, newPath];
-
           fs.rename(image.path, srcPath, function(err) {
             if (err) console.log("ERROR: " + err);
           });
+
+          if (index < formData.imageLenght)
+            newProduct.imgSrc = [...newProduct.imgSrc, newPath];
+          else newProduct.measureSrc = [...newProduct.measureSrc, newPath];
         });
+
 
         if (err) {
           resp.json({ message: "BŁAD!" });
         } else {
+          console.log(newProduct);
           resp.json({
             message: `id: ${newProduct.id},  nazwa: ${newProduct.name}`
           });
@@ -220,7 +225,10 @@ MongoClient.connect(
       console.log(login, password);
 
       if (login === _login && password === _password)
-        res.json({ isAuth: true , key: "eyJrIjoiT0tTcG1pUlY2RnVKZTFVaDFsNFZXdE9ZWmNrMkZYbk"});
+        res.json({
+          isAuth: true,
+          key: "eyJrIjoiT0tTcG1pUlY2RnVKZTFVaDFsNFZXdE9ZWmNrMkZYbk"
+        });
       else res.json({ isAuth: false });
     });
 

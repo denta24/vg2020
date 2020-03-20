@@ -6,7 +6,7 @@ import "lightgallery.js/dist/css/lightgallery.css";
 
 export default class Item extends Component {
   state = {
-    item: { id: "", name: "", prize: 0, imgSrc: [] },
+    item: { id: "", name: "", prize: 0, imgSrc: [], measureSrc: [] },
     items: [{ id: "", name: "", prize: 0, imgSrc: [""] }],
     selectedSize: []
   };
@@ -47,6 +47,14 @@ export default class Item extends Component {
       .then(res => res.json())
       .then(data => {
         this.isLoaded = true;
+        if (
+          typeof data.measureSrc === "undefined" ||
+          data.measureSrc.length === 0
+        ) {
+          console.log("wchodzii");
+          data.measureSrc = this.measures;
+        }
+        console.log(data);
         this.setState({ item: data }, () => {
           if (window.screen.width < 426) {
             // this.handleScroll();
@@ -358,13 +366,13 @@ export default class Item extends Component {
                     <div className="product__clickToInfo ">
                       <LightgalleryProvider>
                         <LightgalleryItem
-                          src={this.measures[0]}
+                          src={item.measureSrc[0]}
                           group="measures"
                         >
                           Jak się dobrze mierzyć?
                         </LightgalleryItem>
 
-                        {this.measures.map((src, idx) => {
+                        {item.measureSrc.map((src, idx) => {
                           if (idx !== 0)
                             return (
                               <LightgalleryItem group="measures" src={src} />
