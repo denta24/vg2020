@@ -12,7 +12,7 @@ export default class Item extends Component {
   };
 
   measures = [
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTpAZ9Fyv8ea0HK_vunNMt-ghH1KElHfoYlzw__82iLx0GyzJw93",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTpAZ9Fyv8ea0HK_vunNMt-ghH1KElHfoYlzw__82iLx0GyzJw9",
     "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTdmVMHqhtNqcI-Jn7TWqDMJ89djbtfGpc_T5QMJKG8B2ceRonn",
     "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSgw37lWeKW15pAoXpS3600hvcJ8BISxMSzoteLiA9tIK0AlmTp"
   ];
