@@ -100,13 +100,13 @@ MongoClient.connect(
 
      const nameOfPath = '/'+ main.name[1] + '/' + item[1];
      console.log(nameOfPath)     
-  //   const linkProps = {
-    //  pathname: nameOfPath,
-      //  state: {
-        //  pathName: { mainCat: main.name[0], category: item[0] },
-       //   pathLink: { mainCat: `/${main.name[1]}`, category: path }
-       // }
-     // };
+    const linkProps = {
+      pathname: nameOfPath,
+       state: {
+       pathName: { mainCat: main.name[0], category: item[0] },
+        pathLink: { mainCat: '/' + main.name[1], category: nameOfPath }
+      }
+      };
       const collection = db.db("VellutoGiorno").collection("test");
       collection
         .find({
@@ -120,9 +120,8 @@ MongoClient.connect(
           res.json({
             kobiety: { items: response },
             params: req.params,
-	    nameOfPath
+	    linkProps
           });
-          console.log(req.params, main.name[0], item[0]);
         });
     });
 
