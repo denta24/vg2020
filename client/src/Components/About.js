@@ -1,12 +1,7 @@
 import React from "react";
 import "./css/About.css";
-import GoogleMapReact from "google-map-react";
 export default function About() {
-  const center = {
-    lat: 59.95,
-    lng: 30.33
-  };
-  const zoom = 11;
+
 
   return (
     <>
