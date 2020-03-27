@@ -1,0 +1,251 @@
+
+const express = require("express");
+const app = express();
+const path = require("path");
+const cors = require("cors");
+var fs = require("fs");
+const multer = require("multer");
+const bodyParser = require("body-parser");
+const cookieParser = require("cookie-parser");
+
+// const mongoose = require("mongoose");
+// const connect = mongoose
+//   .connect(config.mongoURI, {
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true,
+//     useCreateIndex: true,
+//     useFindAndModify: false
+//   })
+//   .then(() => console.log("MongoDB Connected..."))
+//   .catch(err => console.log(err));
+
+app.use(cors());
+
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+app.use(cookieParser());
+app.use("/api/users", require("./routes/users"));
+
+//////////////////
+const MongoClient = require("mongodb").MongoClient;
+const uri =
+  // "mongodb+srv://local:dawidrw123@cluster0-ehgqo.mongodb.net/test?retryWrites=true&w=majority";
+  "mongodb+srv://local:dawidrw123@cluster0-ehgqo.mongodb.net/test?authSource=admin&replicaSet=Cluster0-shard-0&w=majority&readPreference=primary&appname=MongoDB%20Compass%20Community&retryWrites=true&ssl=true";
+/////////////////////////////////////
+
+// SERVER STORE IMG
+const storage = multer.diskStorage({
+  destination: function(req, file, cb) {
+    cb(null, path.join(__dirname, '../img'));
+  },
+  filename: function(req, file, cb) {
+    cb(null, file.originalname);
+  }
+});
+const upload = multer({ storage: storage });
+
+app.use("/img",express.static(path.join(__dirname, '../img')));
+
+///////////////////////////////////////////////////////////////////////////
+
+MongoClient.connect(
+  uri,
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+  },
+  (err, db) => {
+    console.log("connected to MongoClient");
+
+    app.get("/api/products/wybor", (req, res) => {
+      const collection = db.db("VellutoGiorno").collection("WybierzPrzedmioty");
+
+      collection
+        .find({})
+        .toArray()
+        .then(response => {
+          res.json({
+            response
+          });
+          console.log(response);
+        });
+    });
+
+    app.get("/api/product/:id?", (req, res) => {
+      const collection = db.db("VellutoGiorno").collection("test");
+
+      collection.findOne({ id: req.params.id * 1 }).then(response => {
+        res.json(response);
+      });
+    });
+
+    app.get("/api/categories/:mainCategory/:category", (req, res) => {
+      let rawcatdata = fs.readFileSync(path.join(__dirname, '../categories.json'));
+      let { categories } = JSON.parse(rawcatdata);
+
+      let mainCategory = categories.filter(
+        category => category.name[1] === req.params.mainCategory
+      );
+      let category = mainCategory[0].titles.filter(
+        item => item[1] === req.params.category
+      );
+      const [main] = mainCategory;
+      const [item] = category;
+      const itemSubCategory = item;
+	console.log("MAIN   ",main.name[1]);
+	console.log("ITEM   ", item[1]); 
+      ///////CREATING CATEGORIES PATH OBJEC
+
+
+
+     const nameOfPath = '/'+ main.name[1] + '/' + item[1];
+     console.log(nameOfPath)     
+    const linkProps = {
+      pathname: nameOfPath,
+       state: {
+       pathName: { mainCat: main.name[0], category: item[0] },
+        pathLink: { mainCat, category: path }
+      }
+      };
+      const collection = db.db("VellutoGiorno").collection("test");
+      collection
+        .find({
+          $and: [
+            { mainCategory: main.name[0] },
+            { category: item[0] }
+          ]
+        })
+        .toArray()
+        .then(response => {
+          res.json({
+            kobiety: { items: response },
+            params: req.params,
+	    linkProps
+          });
+        });
+    });
+
+    app.get("/api/allOrders", (req, res) => {
+      const newOrder = req.body;
+
+      const collection = db.db("VellutoGiorno").collection("orders");
+      console.log("chce");
+      collection
+        .find({})
+        .toArray()
+        .then(response => {
+          const orders = { orders: response };
+          res.json({
+            orders
+          });
+          console.log(response);
+        });
+    });
+
+    app.get("/api/allProducts", (req, res) => {
+      const collection = db.db("VellutoGiorno").collection("test");
+      console.log("chce");
+
+      collection
+        .find({})
+        .toArray()
+        .then(response => {
+          const items = { items: response };
+          res.json({
+            items: items
+          });
+          console.log(response);
+        });
+    });
+
+    app.post("/api/newOrder", (req, res, err) => {
+      const newOrder = req.body;
+
+      const collection = db.db("VellutoGiorno").collection("orders");
+      console.log("newor", newOrder);
+      collection.findOne({}, { sort: { _id: -1 }, limit: 1 }).then(res => {
+        collection.insertOne(newOrder);
+      });
+    });
+
+    app.post("/api/newProduct", upload.array("images"), (req, resp) => {
+      const formData = req.body;
+      const images = req.files;
+      const newProduct = {
+        id: formData.id,
+        name: formData.name,
+        mainCategory: formData.mainCategory,
+        category: formData.category,
+        subcategory: formData.subcategory,
+        prize: formData.prize * 1,
+        size: formData.size.split(","),
+        color: formData.color,
+        description: formData.description,
+        imgSrc: [],
+        measureSrc: []
+      };
+      ///////////////////DODAWANIE DO BAZY DANYCH
+      console.log(req.body);
+      const collection = db.db("VellutoGiorno").collection("test");
+      collection.findOne({}, { sort: { _id: -1 }, limit: 1 }).then(res => {
+        const lastID = res.id;
+        newProduct.id = lastID + 1;
+
+        images.forEach((image, index) => {
+          const imgName = newProduct.id + "_" + index;
+          const newPath = "/img/" + imgName + ".jpg";
+          const srcPath = path.join(__dirname, `../img/${imgName}.jpg`);
+	  //const oldpath = path.join(__dirname, `../img/${image.path}`);	
+          fs.rename(image.path, srcPath, function(err) {
+            if (err) console.log("ERROR: " + err);
+          });
+
+          if (index < formData.imageLenght)
+            newProduct.imgSrc = [...newProduct.imgSrc, newPath];
+          else newProduct.measureSrc = [...newProduct.measureSrc, newPath];
+        });
+
+
+        if (err) {
+          resp.json({ message: "BŁAD!" });
+        } else {
+          console.log(newProduct);
+          resp.json({
+            message: `id: ${newProduct.id},  nazwa: ${newProduct.name}`
+          });
+        }
+        collection.insertOne(newProduct);
+      });
+    });
+
+    app.post("/api/AdminLogin", (req, res) => {
+      const _login = "kacztex";
+      const _password = "kacztex123";
+
+      const { login, password } = req.body;
+      console.log(login, password);
+
+      if (login === _login && password === _password)
+        res.json({
+          isAuth: true,
+          key: "eyJrIjoiT0tTcG1pUlY2RnVKZTFVaDFsNFZXdE9ZWmNrMkZYbk"
+        });
+      else res.json({ isAuth: false });
+    });
+
+   
+      app.use(express.static(path.join(__dirname, '../client/build')));
+
+      app.get("*", (req, res) => {
+        res.sendFile(
+          path.resolve(__dirname, "../client", "build", "index.html")
+        );
+      });
+  
+
+    const port = 5000;
+    app.listen(port, () => {
+      console.log(`Server Running at ${port}`);
+    });
+  }
+);
