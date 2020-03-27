@@ -21,7 +21,7 @@ export default function Footer() {
           </div>
           <div className="title">
             <i className="fas fa-envelope"></i>
-            <a href="mailto:info@vellutogiorno.pl">info@vellutogiorno.pl</a>
+            <a href="mailto:kacztex@wp.pl">kacztex@wp.pl</a>
           </div>
         </div>
         <div className="divider ">
