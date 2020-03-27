@@ -250,3 +250,18 @@ MongoClient.connect(
     });
   }
 );
+rue,
+          key: "eyJrIjoiT0tTcG1pUlY2RnVKZTFVaDFsNFZXdE9ZWmNrMkZYbk"
+        });
+      else res.json({ isAuth: false });
+    });
+
+
+      app.use(express.static(path.join(__dirname, '../client/build')));
+
+      app.get("*", (req, res) => {
+        res.sendFile(
+          path.resolve(__dirname, "../client", "build", "index.html")
+        );
+      });
+

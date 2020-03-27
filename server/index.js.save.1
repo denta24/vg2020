@@ -87,7 +87,7 @@ MongoClient.connect(
         category => category.name[1] === req.params.mainCategory
       );
       let category = mainCategory[0].titles.filter(
-        item => item[1] === req.params.category
+,,,        item => item[1] === req.params.category
       );
       const [main] = mainCategory;
       const [item] = category;

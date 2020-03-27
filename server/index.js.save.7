@@ -80,7 +80,7 @@ MongoClient.connect(
     });
 
     app.get("/api/categories/:mainCategory/:category", (req, res) => {
-      let rawcatdata = fs.readFileSync(path.join(__dirname, '../categories.json'));
+      let rawcatdata = fs.readFileSync("capath.join(__dirname, `../${image.path}`))tegories.json");
       let { categories } = JSON.parse(rawcatdata);
 
       let mainCategory = categories.filter(
@@ -92,27 +92,25 @@ MongoClient.connect(
       const [main] = mainCategory;
       const [item] = category;
       const itemSubCategory = item;
-	console.log("MAIN   ",main.name[1]);
-	console.log("ITEM   ", item[1]); 
+
       ///////CREATING CATEGORIES PATH OBJEC
 
+      console.log(req.params);
 
-
-     const nameOfPath = '/'+ main.name[1] + '/' + item[1];
-     console.log(nameOfPath)     
-  //   const linkProps = {
-    //  pathname: nameOfPath,
-      //  state: {
-        //  pathName: { mainCat: main.name[0], category: item[0] },
-       //   pathLink: { mainCat: `/${main.name[1]}`, category: path }
-       // }
-     // };
+      const path = `/${main.name[1]}/${item[1]}`;
+      const linkProps = {
+        pathname: path,
+        state: {
+          pathName: { mainCat: main.name[0], category: item[0] },
+          pathLink: { mainCat: `/${main.name[1]}`, category: path }
+        }
+      };
       const collection = db.db("VellutoGiorno").collection("test");
       collection
         .find({
           $and: [
             { mainCategory: main.name[0] },
-            { category: item[0] }
+            { category: itemSubCategory[0] }
           ]
         })
         .toArray()
@@ -120,9 +118,9 @@ MongoClient.connect(
           res.json({
             kobiety: { items: response },
             params: req.params,
-	    nameOfPath
+            linkProps
           });
-          console.log(req.params, main.name[0], item[0]);
+          console.log(req.params, main.name[0], itemSubCategory[0]);
         });
     });
 

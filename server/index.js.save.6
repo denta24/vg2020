@@ -1,4 +1,3 @@
-
 const express = require("express");
 const app = express();
 const path = require("path");
@@ -36,7 +35,7 @@ const uri =
 // SERVER STORE IMG
 const storage = multer.diskStorage({
   destination: function(req, file, cb) {
-    cb(null, path.join(__dirname, '../img'));
+    cb(null, "img");
   },
   filename: function(req, file, cb) {
     cb(null, file.originalname);
@@ -44,7 +43,7 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage: storage });
 
-app.use("/img",express.static(path.join(__dirname, '../img')));
+app.use("/img", express.static("img"));
 
 ///////////////////////////////////////////////////////////////////////////
 
@@ -80,7 +79,7 @@ MongoClient.connect(
     });
 
     app.get("/api/categories/:mainCategory/:category", (req, res) => {
-      let rawcatdata = fs.readFileSync(path.join(__dirname, '../categories.json'));
+      let rawcatdata = fs.readFileSync("categories.json");
       let { categories } = JSON.parse(rawcatdata);
 
       let mainCategory = categories.filter(
@@ -92,27 +91,25 @@ MongoClient.connect(
       const [main] = mainCategory;
       const [item] = category;
       const itemSubCategory = item;
-	console.log("MAIN   ",main.name[1]);
-	console.log("ITEM   ", item[1]); 
+
       ///////CREATING CATEGORIES PATH OBJEC
 
+      console.log(req.params);
 
-
-     const nameOfPath = '/'+ main.name[1] + '/' + item[1];
-     console.log(nameOfPath)     
-  //   const linkProps = {
-    //  pathname: nameOfPath,
-      //  state: {
-        //  pathName: { mainCat: main.name[0], category: item[0] },
-       //   pathLink: { mainCat: `/${main.name[1]}`, category: path }
-       // }
-     // };
+      const path = `/${main.name[1]}/${item[1]}`;
+      const linkProps = {
+        pathname: path,
+        state: {
+          pathName: { mainCat: main.name[0], category: item[0] },
+          pathLink: { mainCat: `/${main.name[1]}`, category: path }
+        }
+      };
       const collection = db.db("VellutoGiorno").collection("test");
       collection
         .find({
           $and: [
             { mainCategory: main.name[0] },
-            { category: item[0] }
+            { category: itemSubCategory[0] }
           ]
         })
         .toArray()
@@ -120,9 +117,9 @@ MongoClient.connect(
           res.json({
             kobiety: { items: response },
             params: req.params,
-	    nameOfPath
+            linkProps
           });
-          console.log(req.params, main.name[0], item[0]);
+          console.log(req.params, main.name[0], itemSubCategory[0]);
         });
     });
 
@@ -195,8 +192,8 @@ MongoClient.connect(
         images.forEach((image, index) => {
           const imgName = newProduct.id + "_" + index;
           const newPath = "/img/" + imgName + ".jpg";
-          const srcPath = path.join(__dirname, `../img/${imgName}.jpg`);
-	  //const oldpath = path.join(__dirname, `../img/${image.path}`);	
+          const srcPath = "img/" + imgName + ".jpg";
+
           fs.rename(image.path, srcPath, function(err) {
             if (err) console.log("ERROR: " + err);
           });
@@ -235,7 +232,7 @@ MongoClient.connect(
     });
 
    
-      app.use(express.static(path.join(__dirname, '../client/build')));
+      app.use(express.stic("client/build"));
 
       app.get("*", (req, res) => {
         res.sendFile(
