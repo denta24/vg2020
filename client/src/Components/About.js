@@ -1,10 +1,38 @@
 import React from "react";
 import "./css/About.css";
+import GoogleMapReact from "google-map-react";
 export default function About() {
+  const center = {
+    lat: 59.95,
+    lng: 30.33
+  };
+  const zoom = 11;
+
   return (
     <>
-      <div className="about">
-        <img className="about__img" src="/photos/about.jpg" alt="" />
+      <div className="map-section">
+        <iframe
+          className="google-map map-section__map"
+          src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d10341.501607079746!2d19.926954!3d49.609527!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x4966422d56a0ed4e!2sKacztex%20Hurtownia%20Odzie%C5%BCy%20Sklep%20Odzie%C5%BCowy!5e0!3m2!1spl!2spl!4v1585333089422!5m2!1spl!2spl"
+          frameborder="0"
+          style={{ border: 0 }}
+          allowfullscreen=""
+          aria-hidden="false"
+          tabindex="0"
+        ></iframe>
+        <div className=" map-section__text">
+          <div>
+            <i class="fas fa-location-arrow"></i>
+          </div>
+          <div >
+            <span className="about-column__big-text">Gdzie jesteśmy?</span>
+            Krawiectwo Konfekcyjne kacztex
+            <br />
+            34-713 Skawa
+            <br />
+            Skawa 558A
+          </div>
+        </div>
       </div>
       <div className="about-column">
         <div className="about-column__divider"></div>
@@ -17,6 +45,7 @@ export default function About() {
           niepowtarzalność fasonów.
         </div>
       </div>
+
       <div className="about-column ">
         <div className="about-column__divider about-column--photo"></div>
         <div className="about-column__divider about-column--text">
